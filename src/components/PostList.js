@@ -13,44 +13,49 @@ export default class IndexPage extends React.Component {
           <div className="content">
             <h1 className="has-text-weight-bold is-size-2">{title}</h1>
           </div>
-          {posts.map(({ node: post }) => (
-            <div
-              className="content"
-              style={{ border: '1px solid #eaecee', padding: '2em 4em' }}
-              key={post.id}
-            >
-              <p>
-                <Link className="has-text-primary" to={post.slug}>
-                  {post.title}
-                </Link>
-                <span> &bull; </span>
-                <small>
-                  {post.date} - posted by{' '}
-                  <Link to={`/author/${post.author.slug}`}>
-                    {post.author.name}
+          {posts.map(({ node: post }) => {
+            const date = new Date(post.dateObject)
+            const pathFromDate = `/${date.getFullYear()}/${date.getMonth()}/${date.getDate()}/${decodeURIComponent(post.slug)}`
+            return (
+              <div
+                className="content"
+                style={{ border: '1px solid #eaecee', padding: '2em 4em' }}
+                key={post.id}
+              >
+                <p>
+                  <Link className="has-text-primary" to={post.slug}>
+                    {post.title}
                   </Link>
-                </small>
-              </p>
-              <div>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: post.excerpt.replace(/<p class="link-more.*/, ''),
-                  }}
-                />
-                <div
-                  className="fooo"
-                  dangerouslySetInnerHTML={{
-                  __html: post.featured_media}}
-                />
-                {/*
-                <img src={post.featured_media.source_url} />
-                */}
-                <Link className="button is-small" to={post.slug}>
-                  Keep Reading →
-                </Link>
+                  <span> &bull; </span>
+                  <small>
+                    {post.date} - posted by{' '}
+                    <Link to={`/author/${post.author.slug}`}>
+                      {post.author.name}
+                    </Link>
+                  </small>
+                </p>
+                <div>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: post.excerpt.replace(/<p class="link-more.*/, ''),
+                    }}
+                  />
+                  <div
+                    className="fooo"
+                    dangerouslySetInnerHTML={{
+                    __html: post.featured_media}}
+                  />
+                  {/*
+                  <img src={post.featured_media.source_url} />
+                  */}
+                  <Link className="button is-small" to={pathFromDate}>
+                    Keep Reading →
+                  </Link>
+                </div>
               </div>
-            </div>
-          ))}
+              
+            )}
+          )}
         </div>
       </section>
     )
@@ -74,6 +79,7 @@ export const pageQuery = graphql`
         wordpress_48
       }
     }
+    dateObject: date
     date(formatString: "MMMM DD, YYYY")
     slug
     featured_media {

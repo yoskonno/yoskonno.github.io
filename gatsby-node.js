@@ -60,6 +60,7 @@ exports.createPages = ({ actions, graphql }) => {
                 id
                 slug
                 status
+                date
               }
             }
           }
@@ -85,8 +86,12 @@ exports.createPages = ({ actions, graphql }) => {
       // Iterate over the array of posts
       _.each(posts, ({ node: post }) => {
         // Create the Gatsby page for this WordPress post
+        const date = new Date(post.dateObject)
+        const pathFromDate = `/${date.getFullYear()}/${date.getMonth()}/${date.getDate()}/${decodeURIComponent(post.slug)}`
+        console.log('\n')
+        console.log(pathFromDate)
         createPage({
-          path: decodeURIComponent(post.slug),
+          path: pathFromDate,
           component: postTemplate,
           context: {
             id: post.id,
