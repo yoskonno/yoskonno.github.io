@@ -23,7 +23,7 @@ export default class IndexPage extends React.Component {
                 key={post.id}
               >
                 <p>
-                  <Link className="has-text-primary" to={post.slug}>
+                  <Link className="has-text-primary" to={pathFromDate}>
                     {post.title}
                   </Link>
                   <span> &bull; </span>

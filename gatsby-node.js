@@ -86,8 +86,8 @@ exports.createPages = ({ actions, graphql }) => {
       // Iterate over the array of posts
       _.each(posts, ({ node: post }) => {
         // Create the Gatsby page for this WordPress post
-        const date = new Date(post.dateObject)
-        const pathFromDate = `/${date.getFullYear()}/${date.getMonth()}/${date.getDate()}/${decodeURIComponent(post.slug)}`
+        const date = new Date(post.date)
+        const pathFromDate = `/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}/${decodeURIComponent(post.slug)}`
         console.log('\n')
         console.log(pathFromDate)
         createPage({
