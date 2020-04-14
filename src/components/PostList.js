@@ -15,7 +15,7 @@ export default class IndexPage extends React.Component {
           </div>
           {posts.map(({ node: post }) => {
             const date = new Date(post.dateObject)
-            const pathFromDate = `/${date.getFullYear()}/${date.getMonth()}/${date.getDate()}/${decodeURIComponent(post.slug)}`
+            const pathFromDate = `/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}/${decodeURIComponent(post.slug)}`
             return (
               <div
                 className="content"
