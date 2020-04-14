@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
+import Img from "gatsby-image"
 
 export default class IndexPage extends React.Component {
   render() {
@@ -36,6 +37,14 @@ export default class IndexPage extends React.Component {
                     __html: post.excerpt.replace(/<p class="link-more.*/, ''),
                   }}
                 />
+                <div
+                  className="fooo"
+                  dangerouslySetInnerHTML={{
+                  __html: post.featured_media}}
+                />
+                {/*
+                <img src={post.featured_media.source_url} />
+                */}
                 <Link className="button is-small" to={post.slug}>
                   Keep Reading →
                 </Link>
@@ -67,5 +76,8 @@ export const pageQuery = graphql`
     }
     date(formatString: "MMMM DD, YYYY")
     slug
+    featured_media {
+      source_url
+    }
   }
 `
