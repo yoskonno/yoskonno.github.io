@@ -13,49 +13,51 @@ export default class IndexPage extends React.Component {
           <div className="content">
             <h1 className="has-text-weight-bold is-size-2">{title}</h1>
           </div>
-          {posts.map(({ node: post }) => {
-            const date = new Date(post.dateObject)
-            const pathFromDate = `/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}/${decodeURIComponent(post.slug)}`
-            return (
-              <div
-                className="content"
-                style={{ border: '1px solid #eaecee', padding: '2em 4em' }}
-                key={post.id}
-              >
-                <p>
-                  <Link className="has-text-primary" to={pathFromDate}>
-                    {post.title}
-                  </Link>
-                  <span> &bull; </span>
-                  <small>
-                    {post.date} - posted by{' '}
-                    <Link to={`/author/${post.author.slug}`}>
-                      {post.author.name}
+          <div className="post-list">
+            {posts.map(({ node: post }) => {
+              const date = new Date(post.dateObject)
+              const pathFromDate = `/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}/${decodeURIComponent(post.slug)}`
+              return (
+                <div
+                  className="post-list__item"
+                  style={{ border: '1px solid #eaecee', padding: '2em 4em' }}
+                  key={post.id}
+                >
+                  <p>
+                    <Link className="has-text-primary" to={pathFromDate}>
+                      {post.title}
                     </Link>
-                  </small>
-                </p>
-                <div>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: post.excerpt.replace(/<p class="link-more.*/, ''),
-                    }}
-                  />
-                  <div
-                    className="fooo"
-                    dangerouslySetInnerHTML={{
-                    __html: post.featured_media}}
-                  />
-                  {/*
-                  <img src={post.featured_media.source_url} />
-                  */}
-                  <Link className="button is-small" to={pathFromDate}>
-                    Keep Reading →
-                  </Link>
+                    <span> &bull; </span>
+                    <small>
+                      {post.date} - posted by{' '}
+                      <Link to={`/author/${post.author.slug}`}>
+                        {post.author.name}
+                      </Link>
+                    </small>
+                  </p>
+                  <div>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: post.excerpt.replace(/<p class="link-more.*/, ''),
+                      }}
+                    />
+                    <div
+                      className="fooo"
+                      dangerouslySetInnerHTML={{
+                      __html: post.featured_media}}
+                    />
+                    {/*
+                    <img src={post.featured_media.source_url} />
+                    */}
+                    <Link className="button is-small" to={pathFromDate}>
+                      Keep Reading →
+                    </Link>
+                  </div>
                 </div>
-              </div>
-              
+                
+              )}
             )}
-          )}
+          </div>
         </div>
       </section>
     )

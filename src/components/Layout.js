@@ -3,6 +3,7 @@ import Helmet from 'react-helmet'
 
 import Navbar from './Navbar'
 import './all.sass'
+import './scss/style.scss'
 
 const TemplateWrapper = ({ children }) => (
   <div>
