@@ -17,13 +17,30 @@ export default class IndexPage extends React.Component {
             {posts.map(({ node: post }) => {
               const date = new Date(post.dateObject)
               const pathFromDate = `/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}/${decodeURIComponent(post.slug)}`
+              let thumbnailSrc = "" // TODO: default img
+
+              let ratio = 0
+
+              try {
+                thumbnailSrc = post.featured_media.localFile.childImageSharp.resize.src
+
+                const { height, width } = post.featured_media.localFile.childImageSharp.resize
+                ratio = width / height
+              } catch(error) {
+                console.log(error)
+              }
+
+              const backgroundImageStyle = {
+                backgroundImage: `url(${thumbnailSrc})`,
+                backgroundSize: ratio > 2 ? 'contain' : 'cover'
+              }
+
               return (
                 <div
                   className="post-list__item"
-                  style={{ border: '1px solid #eaecee', padding: '2em 4em' }}
                   key={post.id}
                 >
-                  <img src={post.featured_media.localFile.childImageSharp.resize.src} alt="" />
+                  <div className="post-list__thumbnail" style={backgroundImageStyle} />
                   <p>
                     <Link className="has-text-primary" to={pathFromDate}>
                       {post.title}
@@ -42,6 +59,7 @@ export default class IndexPage extends React.Component {
                         __html: post.excerpt.replace(/<p class="link-more.*/, ''),
                       }}
                     />
+                    <h5>ratio: {ratio}</h5>
                     {/*
                     <img src={post.featured_media.source_url} />
                     */}
@@ -86,6 +104,8 @@ export const pageQuery = graphql`
         childImageSharp {
           resize {
             src
+            height
+            width
           }
         }
       }
