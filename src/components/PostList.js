@@ -21,6 +21,9 @@ export default class IndexPage extends React.Component {
 
               let ratio = 0
 
+              // sometimes localFile is null
+              // and only when localFile is null,
+              // medium sized image exists... don't know why
               try {
                 thumbnailSrc = post.featured_media.localFile.childImageSharp.resize.src
 
@@ -28,6 +31,15 @@ export default class IndexPage extends React.Component {
                 ratio = width / height
               } catch(error) {
                 console.log(error)
+
+                try {
+                  thumbnailSrc = post.featured_media.media_details.sizes.medium.source_url
+
+                  const { height, width } = post.featured_media.media_details.sizes.medium
+                  ratio = width / height
+                } catch(errorNext) {
+                  console.log(errorNext)
+                }
               }
 
               const backgroundImageStyle = {
@@ -99,6 +111,15 @@ export const pageQuery = graphql`
     date(formatString: "MMMM DD, YYYY")
     slug
     featured_media {
+      media_details {
+        sizes {
+          medium {
+            source_url
+            height
+            width
+          }
+        }
+      }
       source_url
       localFile {
         childImageSharp {
