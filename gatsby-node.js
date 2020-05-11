@@ -109,6 +109,29 @@ exports.createPages = ({ actions, graphql }) => {
         })
       })
 
+      const monthlyArchiveTemplate = path.resolve(`./src/templates/monthlyArchive.js`)
+
+      _.each(listOfMonths, (monthWithYear) => {
+        const yearFrom = monthWithYear.slice(0, 4)
+        const monthFrom = monthWithYear.slice(5,7)
+        /* eslint-disable-next-line radix */
+        const yearTo = monthFrom === '12' ? (parseInt(yearFrom) + 1) : yearFrom
+        /* eslint-disable-next-line radix */
+        const monthTo = monthFrom === '12' ? '01' : String(parseInt(monthFrom) + 1).padStart(2, '0')
+        const dateFrom = `${yearFrom}-${monthFrom}-01T00:00:00.000Z`
+        const dateTo = `${yearTo}-${monthTo}-01T00:00:00.000Z`
+
+        createPage({
+          path: `/test/${monthWithYear}`,
+          component: monthlyArchiveTemplate,
+          context: {
+            dateFrom,
+            dateTo,
+            month: monthWithYear,
+          },
+        })
+      })
+
       console.log('\n@@@ listOfMonths @@@')
       console.log(listOfMonths)
 

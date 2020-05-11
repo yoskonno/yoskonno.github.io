@@ -8,14 +8,14 @@ const MonthlyArchive = props => {
   const { data, pageContext } = props
   const { edges: posts, totalCount } = data.allWordpressPost
   const { title: siteTitle } = data.site.siteMetadata
-  const { name: tag } = pageContext
+  const { month } = pageContext
   const title = `${totalCount} post${
     totalCount === 1 ? '' : 's'
-  } with the tag ${tag}`
+  } in the month: ${month}`
 
   return (
     <Layout>
-      <Helmet title={`${tag} | ${siteTitle}`} />
+      <Helmet title={`${month} | ${siteTitle}`} />
       <PostList posts={posts} title={title} />
     </Layout>
   )
@@ -24,13 +24,13 @@ const MonthlyArchive = props => {
 export default MonthlyArchive
 
 export const pageQuery = graphql`
-  query MonthlyArchivePage($slug: String!) {
+  query MonthlyArchivePage($dateFrom: Date!, $dateTo: Date!) {
     site {
       siteMetadata {
         title
       }
     }
-    allWordpressPost(filter: { tags: { elemMatch: { slug: { eq: $slug } } } }) {
+    allWordpressPost(filter: {date: {gte: $dateFrom, lt: $dateTo}}) {
       totalCount
       edges {
         node {
