@@ -122,7 +122,7 @@ exports.createPages = ({ actions, graphql }) => {
         const dateTo = `${yearTo}-${monthTo}-01T00:00:00.000Z`
 
         createPage({
-          path: `/test/${monthWithYear}`,
+          path: `/archives/${monthWithYear}`,
           component: monthlyArchiveTemplate,
           context: {
             dateFrom,
