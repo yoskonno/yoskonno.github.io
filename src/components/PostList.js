@@ -48,38 +48,36 @@ export default class IndexPage extends React.Component {
               }
 
               return (
-                <div
+                <Link
                   className="post-list__item"
                   key={post.id}
+                  to={pathFromDate}
                 >
                   <div className="post-list__thumbnail" style={backgroundImageStyle} />
+                  <h4 className="post-list__title">
+                    {post.title}
+                  </h4>
                   <p>
-                    <Link className="has-text-primary" to={pathFromDate}>
-                      {post.title}
-                    </Link>
-                    <span> &bull; </span>
                     <small>
-                      {post.date} - posted by{' '}
+                      {post.date}
+                    </small>
+                   </p>
+                  <p>
+                    <small>posted by{' '}
                       <Link to={`/author/${post.author.slug}`}>
                         {post.author.name}
                       </Link>
                     </small>
                   </p>
-                  <div>
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: post.excerpt.replace(/<p class="link-more.*/, ''),
-                      }}
-                    />
-                    <h5>ratio: {ratio}</h5>
-                    {/*
-                    <img src={post.featured_media.source_url} />
-                    */}
-                    <Link className="button is-small" to={pathFromDate}>
-                      Keep Reading →
-                    </Link>
-                  </div>
-                </div>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: post.excerpt.replace(/<p class="link-more.*/, '').replace('[&hellip;]', '...'),
+                    }}
+                  />
+                  <Link className="button is-small" to={pathFromDate}>
+                    Keep Reading →
+                  </Link>
+                </Link>
                 
               )}
             )}
