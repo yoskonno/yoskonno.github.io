@@ -23,6 +23,7 @@ export default class IndexPage extends React.Component {
                   style={{ border: '1px solid #eaecee', padding: '2em 4em' }}
                   key={post.id}
                 >
+                  <img src={post.featured_media.localFile.childImageSharp.resize.src} alt="" />
                   <p>
                     <Link className="has-text-primary" to={pathFromDate}>
                       {post.title}
@@ -40,11 +41,6 @@ export default class IndexPage extends React.Component {
                       dangerouslySetInnerHTML={{
                         __html: post.excerpt.replace(/<p class="link-more.*/, ''),
                       }}
-                    />
-                    <div
-                      className="fooo"
-                      dangerouslySetInnerHTML={{
-                      __html: post.featured_media}}
                     />
                     {/*
                     <img src={post.featured_media.source_url} />
@@ -86,6 +82,13 @@ export const pageQuery = graphql`
     slug
     featured_media {
       source_url
+      localFile {
+        childImageSharp {
+          resize {
+            src
+          }
+        }
+      }
     }
   }
 `
