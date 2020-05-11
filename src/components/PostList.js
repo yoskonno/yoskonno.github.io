@@ -16,7 +16,7 @@ export default class IndexPage extends React.Component {
           <div className="post-list">
             {posts.map(({ node: post }) => {
               const date = new Date(post.dateObject)
-              const pathFromDate = `/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}/${decodeURIComponent(post.slug)}`
+              const pathFromDate = `/${date.getFullYear()}/${String(date.getMonth() + 1).padStart(2, '0')}/${String(date.getDate()).padStart(2, '0')}/${decodeURIComponent(post.slug)}`
               let thumbnailSrc = "" // TODO: default img
 
               let ratio = 0

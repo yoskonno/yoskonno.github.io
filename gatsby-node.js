@@ -83,13 +83,23 @@ exports.createPages = ({ actions, graphql }) => {
           ? getOnlyPublished(allPosts)
           : allPosts
 
+      const listOfMonths = []
+
       // Iterate over the array of posts
       _.each(posts, ({ node: post }) => {
         // Create the Gatsby page for this WordPress post
         const date = new Date(post.date)
-        const pathFromDate = `/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}/${decodeURIComponent(post.slug)}`
+        const pathFromDate = `/${date.getFullYear()}/${String(date.getMonth() + 1).padStart(2, '0')}/${String(date.getDate()).padStart(2, '0')}/${decodeURIComponent(post.slug)}`
+
+        // create list of months
+        const yearAndMonth = `${String(date.getFullYear()).padStart(2, '0')}/${String(date.getMonth() + 1).padStart(2, '0')}`
+        if (!listOfMonths.includes(yearAndMonth)) {
+          listOfMonths.push(yearAndMonth)
+        }
+
         console.log('\n')
         console.log(pathFromDate)
+
         createPage({
           path: pathFromDate,
           component: postTemplate,
@@ -99,11 +109,14 @@ exports.createPages = ({ actions, graphql }) => {
         })
       })
 
+      console.log('\n@@@ listOfMonths @@@')
+      console.log(listOfMonths)
+
       // Create a paginated blog, e.g., /, /page/2, /page/3
       paginate({
         createPage,
         items: posts,
-        itemsPerPage: 10,
+        itemsPerPage: 12,
         pathPrefix: ({ pageNumber }) => (pageNumber === 0 ? `/` : `/page`),
         component: blogTemplate,
       })
