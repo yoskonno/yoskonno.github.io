@@ -41,14 +41,14 @@ const Archives = () => (
       })
       return (
         <div>
-          <h4>Archives</h4>
+          <h4>アーカイブ</h4>
           <ul>
             {listOfMonths.map((monthWithYear) => {
               const year = monthWithYear.slice(0, 4)
               const month = monthWithYear.slice(5, 7)
               const monthWithYearInJp = `${year}年${month}月`
               return (
-                <li>
+                <li key={monthWithYear}>
                   <Link to={`/archives/${monthWithYear}`}>
                     {monthWithYearInJp}
                   </Link>
@@ -57,7 +57,8 @@ const Archives = () => (
             })}
           </ul>
         </div>
-    )}}
+      )
+    }}
   />
 )
 

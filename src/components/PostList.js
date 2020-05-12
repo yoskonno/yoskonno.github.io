@@ -61,7 +61,7 @@ export default class IndexPage extends React.Component {
                     <small>
                       {post.date}
                     </small>
-                   </p>
+                  </p>
                   <p>
                     <small>posted by{' '}
                       <Link to={`/author/${post.author.slug}`}>

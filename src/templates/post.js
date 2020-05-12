@@ -11,13 +11,17 @@ export const BlogPostTemplate = ({
   title,
   date,
   author,
+  eyeCatchImageUrl
 }) => {
   return (
     <section className="section">
       <div className="container content">
         <div className="columns">
           <div className="column is-10 is-offset-1">
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
+            <div className="post__top-image-wrapper">
+              <img src={eyeCatchImageUrl} alt="" className="post__top-image" />
+            </div>
+            <h1 className="post__title">
               {title}
             </h1>
             <div dangerouslySetInnerHTML={{ __html: content }} />
@@ -78,6 +82,7 @@ const BlogPost = ({ data }) => {
         title={post.title}
         date={post.date}
         author={post.author}
+        eyeCatchImageUrl={post.featured_media.source_url}
       />
     </Layout>
   )
@@ -118,6 +123,9 @@ export const pageQuery = graphql`
       author {
         name
         slug
+      }
+      featured_media {
+        source_url
       }
     }
   }

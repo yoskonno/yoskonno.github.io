@@ -36,8 +36,10 @@ const RecentPosts = () => (
               const month = String(post.date).slice(5, 7)
               const date = String(post.date).slice(8, 10)
               return (
-                <li>
-                  <Link to={`/${year}/${month}/${date}/${post.slug}`}>
+                <li key={post.slug}>
+                  <Link
+                    to={`/${year}/${month}/${date}/${post.slug}`}
+                  >
                     {post.title}
                   </Link>
                 </li>
