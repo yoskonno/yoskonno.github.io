@@ -1,9 +1,10 @@
 import React from 'react'
 import Archives from './Archives'
+import RecentPosts from './RecentPosts'
 
 const Sidebar = () => (
   <div className="submenu column is-3">
-    side menu
+    <RecentPosts />
     <Archives />
   </div>
 )

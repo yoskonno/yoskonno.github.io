@@ -49,7 +49,7 @@ const Archives = () => (
               const monthWithYearInJp = `${year}年${month}月`
               return (
                 <li>
-                  <Link to={`/archives/${month}`}>
+                  <Link to={`/archives/${monthWithYear}`}>
                     {monthWithYearInJp}
                   </Link>
                 </li>
