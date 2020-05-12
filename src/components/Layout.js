@@ -9,7 +9,11 @@ import './scss/style.scss'
 
 const TemplateWrapper = ({ children }) => (
   <div>
-    <Helmet title="Home | Gatsby + WordPress" />
+    <Helmet title="Home | Gatsby + WordPress">
+
+      <meta name="robots" content="noindex" />
+      
+    </Helmet>
     <Navbar />
     <main className="columns">
       <div className="column">{children}</div>
