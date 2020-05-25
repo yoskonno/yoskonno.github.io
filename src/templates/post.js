@@ -72,6 +72,13 @@ BlogPostTemplate.propTypes = {
 const BlogPost = ({ data }) => {
   const { wordpressPost: post } = data
 
+  let eyeCatchImageUrl = "https://mobalab.net/image/top/logo_2line.svg"
+  try {
+    eyeCatchImageUrl = post.featured_media.source_url
+  } catch(error) {
+    console.log(error)
+  }
+
   return (
     <Layout>
       <Helmet title={`${post.title} | Blog`} />
@@ -82,7 +89,7 @@ const BlogPost = ({ data }) => {
         title={post.title}
         date={post.date}
         author={post.author}
-        eyeCatchImageUrl={post.featured_media.source_url}
+        eyeCatchImageUrl={eyeCatchImageUrl}
       />
     </Layout>
   )
