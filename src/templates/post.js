@@ -74,7 +74,7 @@ const BlogPost = ({ data }) => {
 
   let eyeCatchImageUrl = "https://mobalab.net/image/top/logo_2line.svg"
   try {
-    eyeCatchImageUrl = post.featured_media.source_url
+    eyeCatchImageUrl = post.featured_media.media_details.sizes.large.source_url
   } catch(error) {
     console.log(error)
   }
@@ -132,7 +132,15 @@ export const pageQuery = graphql`
         slug
       }
       featured_media {
-        source_url
+        media_details {
+          sizes {
+            large {
+              source_url
+              height
+              width
+            }
+          }
+        }
       }
     }
   }
