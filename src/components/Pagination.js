@@ -2,7 +2,15 @@ import React from 'react'
 import { Link } from 'gatsby'
 
 const Pagination = ({ pageContext, pathPrefix }) => {
-  const { previousPagePath, nextPagePath } = pageContext
+  const {
+    previousPagePath,
+    nextPagePath,
+    humanPageNumber,
+    numberOfPages,
+  } = pageContext
+
+  const threePathsBelow = getThreePathsBelow(humanPageNumber, numberOfPages)
+  const threePathsAbove = getThreePathsAbove(humanPageNumber, numberOfPages)
 
   return (
     <nav className="pagination" role="navigation">
@@ -14,6 +22,10 @@ const Pagination = ({ pageContext, pathPrefix }) => {
             </Link>
           </div>
         )}
+        <p>humanPageNumber: {humanPageNumber}</p>
+        <p>numberOfPages: {numberOfPages}</p>
+        <p>threePathsBelow: {threePathsBelow}</p>
+        <p>threePathsAbove: {threePathsAbove}</p>
         {nextPagePath && (
           <div className="navbar-item">
             <Link to={nextPagePath} rel="next">
@@ -24,6 +36,14 @@ const Pagination = ({ pageContext, pathPrefix }) => {
       </div>
     </nav>
   )
+}
+
+const getThreePathsBelow = (humanPageNumber, numberOfPages) => {
+  
+}
+
+const getThreePathsAbove = () => {
+  
 }
 
 export default Pagination
