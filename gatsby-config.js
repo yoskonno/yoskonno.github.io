@@ -10,6 +10,7 @@ module.exports = {
       options: {
         // The base url to your WP site.
         baseUrl: 'stg-engineering.mobalab.net/',
+        keepMediaSizes: true,
         // WP.com sites set to true, WP.org set to false
         hostingWPCOM: false,
         // The protocol. This can be http or https.
