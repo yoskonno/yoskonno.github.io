@@ -9,11 +9,11 @@ module.exports = {
       resolve: 'gatsby-source-wordpress',
       options: {
         // The base url to your WP site.
-        baseUrl: 'engineering.mobalab.net',
+        baseUrl: 'stg-engineering.mobalab.net/',
         // WP.com sites set to true, WP.org set to false
         hostingWPCOM: false,
         // The protocol. This can be http or https.
-        protocol: 'https',
+        protocol: 'http',
         // Use 'Advanced Custom Fields' Wordpress plugin
         useACF: false,
         auth: {},
@@ -30,7 +30,7 @@ module.exports = {
         ],
       },
     },
-    'gatsby-plugin-sharp',
+    // 'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
       // Removes unused css rules
