@@ -38,29 +38,34 @@ export default class IndexPage extends React.Component {
                   to={pathFromDate}
                 >
                   <div className="post-list__thumbnail" style={backgroundImageStyle} />
-                  <h4 className="post-list__title">
-                    {post.title}
-                  </h4>
-                  <p>
-                    <small>
-                      {post.date}
-                    </small>
-                  </p>
-                  <p>
-                    <small>posted by{' '}
-                      <Link to={`/author/${post.author.slug}`}>
-                        {post.author.name}
+                  <div className="post-list__main-area">
+                    <h4 className="post-list__title">
+                      {post.title}
+                    </h4>
+                      <p className="post-list__small">
+                        {post.date}
+                      </p>
+                      <p className="post-list__small">
+                        posted by{' '}
+                        <Link to={`/author/${post.author.slug}`}>
+                          {post.author.name}
+                        </Link>
+                      </p>
+                    <div
+                      className="post-list__excerpt"
+                      dangerouslySetInnerHTML={{
+                        __html: post.excerpt.replace(/<p class="link-more.*/, '').replace('[&hellip;]', '...'),
+                      }}
+                    />
+                    <div className="post-list__button-area">
+                      <Link
+                        className="button is-small post-list__button"
+                        to={pathFromDate}
+                      >
+                        続きを読む →
                       </Link>
-                    </small>
-                  </p>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: post.excerpt.replace(/<p class="link-more.*/, '').replace('[&hellip;]', '...'),
-                    }}
-                  />
-                  <Link className="button is-small" to={pathFromDate}>
-                    Keep Reading →
-                  </Link>
+                    </div>
+                  </div>
                 </Link>
                 
               )}
