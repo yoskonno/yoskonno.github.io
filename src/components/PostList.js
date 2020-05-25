@@ -116,15 +116,6 @@ export const pageQuery = graphql`
         }
       }
       source_url
-      localFile {
-        childImageSharp {
-          resize {
-            src
-            height
-            width
-          }
-        }
-      }
     }
   }
 `
