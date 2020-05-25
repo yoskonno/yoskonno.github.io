@@ -10,9 +10,6 @@ export default class IndexPage extends React.Component {
     return (
       <section className="section">
         <div className="container">
-          <div className="content">
-            <h1 className="has-text-weight-bold is-size-2">{title}</h1>
-          </div>
           <div className="post-list">
             {posts.map(({ node: post }) => {
               const date = new Date(post.dateObject)
