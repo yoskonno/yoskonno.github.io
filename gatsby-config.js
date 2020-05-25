@@ -30,8 +30,6 @@ module.exports = {
         ],
       },
     },
-    // 'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
     {
       // Removes unused css rules
       resolve:'gatsby-plugin-purgecss',
@@ -43,15 +41,5 @@ module.exports = {
       },
     }, // must be after other CSS plugins
     'gatsby-plugin-netlify', // make sure to keep it last in the array
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          {
-            resolve: `gatsby-remark-highlight-code`
-          },
-        ],
-      },
-    },
   ],
 }

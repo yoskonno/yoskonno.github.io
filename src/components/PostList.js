@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
-import Img from "gatsby-image"
 
 export default class IndexPage extends React.Component {
   render() {
@@ -18,25 +17,13 @@ export default class IndexPage extends React.Component {
 
               let ratio = 0
 
-              // sometimes localFile is null
-              // and only when localFile is null,
-              // medium sized image exists... don't know why
               try {
-                thumbnailSrc = post.featured_media.localFile.childImageSharp.resize.src
+                thumbnailSrc = post.featured_media.media_details.sizes.medium.source_url
 
-                const { height, width } = post.featured_media.localFile.childImageSharp.resize
+                const { height, width } = post.featured_media.media_details.sizes.medium
                 ratio = width / height
               } catch(error) {
                 console.log(error)
-
-                try {
-                  thumbnailSrc = post.featured_media.media_details.sizes.medium.source_url
-
-                  const { height, width } = post.featured_media.media_details.sizes.medium
-                  ratio = width / height
-                } catch(errorNext) {
-                  console.log(errorNext)
-                }
               }
 
               const backgroundImageStyle = {
