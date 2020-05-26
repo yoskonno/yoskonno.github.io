@@ -8,7 +8,6 @@ import hljs from 'highlight.js'
 
 class BlogPostTemplate extends React.Component {
   componentDidMount() {
-  
     document.querySelectorAll("pre").forEach(block => {
       hljs.highlightBlock(block)
     })
@@ -25,12 +24,12 @@ class BlogPostTemplate extends React.Component {
       eyeCatchImageUrl
     } = this.props
 
-    var replace = "brush:[ a-z]*;";
+    var replace = "brush: ([ a-z]*);";
     var re = new RegExp(replace,"g");
     console.log(replacedContent)
   
     let replacedContent = content
-    replacedContent = replacedContent.replace(re, "language-ruby");
+    replacedContent = replacedContent.replace(re, "language-$1");
 
     return (
       <section className="section">
