@@ -13,7 +13,7 @@ export default class IndexPage extends React.Component {
             {posts.map(({ node: post }) => {
               const date = new Date(post.dateObject)
               const pathFromDate = `/${date.getFullYear()}/${String(date.getMonth() + 1).padStart(2, '0')}/${String(date.getDate()).padStart(2, '0')}/${decodeURIComponent(post.slug)}`
-              let thumbnailSrc = "https://mobalab.net/image/top/logo_2line.svg"
+              let thumbnailSrc = "/img/mobalab-logo.jpg"
 
               let ratio = 0
 

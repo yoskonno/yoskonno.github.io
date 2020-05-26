@@ -36,9 +36,11 @@ class BlogPostTemplate extends React.Component {
         <div className="container content">
           <div className="columns">
             <div className="column is-10 is-offset-1">
-              <div className="post__top-image-wrapper">
-                <img src={eyeCatchImageUrl} alt="" className="post__top-image" />
-              </div>
+              {eyeCatchImageUrl !== null && (
+                <div className="post__top-image-wrapper">
+                  <img src={eyeCatchImageUrl} alt="" className="post__top-image" />
+                </div>
+              )}
               <h1 className="post__title">
                 {title}
               </h1>
@@ -92,7 +94,7 @@ BlogPostTemplate.propTypes = {
 const BlogPost = ({ data }) => {
   const { wordpressPost: post } = data
 
-  let eyeCatchImageUrl = "https://mobalab.net/image/top/logo_2line.svg"
+  let eyeCatchImageUrl = null
   try {
     eyeCatchImageUrl = post.featured_media.media_details.sizes.medium_large.source_url
   } catch(error) {
