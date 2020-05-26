@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
+import 'highlight.js/styles/railscasts.css'
+import hljs from 'highlight.js'
 
 export const BlogPostTemplate = ({
   content,
@@ -13,6 +15,22 @@ export const BlogPostTemplate = ({
   author,
   eyeCatchImageUrl
 }) => {
+  //const replacedContent = content.replace('brush:\[\ \a\-\z\]\*;', 'fooBar')
+  
+  //hljs.registerLanguage('ruby', ruby)
+  var replace = "brush:[ a-z]*;";
+  var re = new RegExp(replace,"g");
+
+  let replacedContent = content
+  replacedContent = replacedContent.replace(re, "language-ruby");
+
+  document.querySelectorAll("pre").forEach(block => {
+    console.log("\n@@@@@@")
+    hljs.highlightBlock(block)
+  })
+
+  //const replacedContent = content.replace('brush:', 'fooBar:;')
+  console.log(replacedContent)
   return (
     <section className="section">
       <div className="container content">
@@ -24,7 +42,7 @@ export const BlogPostTemplate = ({
             <h1 className="post__title">
               {title}
             </h1>
-            <div dangerouslySetInnerHTML={{ __html: content }} />
+            <div dangerouslySetInnerHTML={{ __html: replacedContent }} />
             <div style={{ marginTop: `4rem` }}>
               <p>
                 {date} - posted by{' '}
