@@ -15,8 +15,8 @@ const TemplateWrapper = ({ children }) => (
       
     </Helmet>
     <Navbar />
-    <main className="columns">
-      <div className="column">{children}</div>
+    <main className="columns is-marginless">
+      <div className="column is-three-quarters">{children}</div>
       <Sidebar />
     </main>
     <Footer />
