@@ -12,6 +12,7 @@ const RecentPosts = () => (
               title
               date
               slug
+              status
             }
           }
         }
