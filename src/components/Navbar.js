@@ -13,7 +13,7 @@ const Navbar = () => (
         </Link>
       </div>
       <div className="navbar-start">
-        <h2 className="navbar-item">もばらぶエンジニアブログ</h2>
+        <p className="navbar-item">もばらぶエンジニアブログ</p>
         <a
           className="navbar-item"
           href='/'
