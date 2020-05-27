@@ -44,10 +44,14 @@
     "test-jest": "jest"
   },
   "devDependencies": {
+    "babel-jest": "^26.0.1",
+    "babel-preset-gatsby": "^0.4.7",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-prettier": "^6.11.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^26.0.1",
     "prettier": "^1.18.2",
+    "react-test-renderer": "^16.13.1",
     "rimraf": "^3.0.2"
   },
   "prettier": {

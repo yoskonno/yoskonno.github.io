@@ -1,8 +1,14 @@
+import moment from 'moment-timezone'
 
-export const getZDate = (date) => {
+export const getUtcDate = (date) => {
   return date.getDate()
 }
 
 export const getJstDate = (date) => {
-  return date.getDate()
+
+
+  return date
+}
+
+export const testMoment = () => {
 }
