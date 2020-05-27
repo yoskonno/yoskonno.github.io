@@ -27,7 +27,7 @@ class BlogPostTemplate extends React.Component {
     var replace = "brush: ([ a-z]*);";
     var re = new RegExp(replace,"g");
   
-    let replacedContent = content.replace(re, "language-$1");
+    let replacedContent = content.replace(re, "language-$1 hljs");
 
     return (
       <section className="section">
