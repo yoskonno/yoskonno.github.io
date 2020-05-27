@@ -17,6 +17,7 @@
     "gatsby-source-wordpress": "^3.3.1",
     "highlight.js": "^10.0.3",
     "lodash": "^4.17.5",
+    "moment-timezone": "^0.5.31",
     "node-sass": "^4.14.1",
     "parcel-bundler": "^1.12.3",
     "patch-package": "^6.2.2",
@@ -39,11 +40,13 @@
     "serve": "gatsby serve",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "test-jest": "jest"
   },
   "devDependencies": {
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-prettier": "^6.11.0",
+    "jest": "^26.0.1",
     "prettier": "^1.18.2",
     "rimraf": "^3.0.2"
   },
