@@ -1,14 +1,8 @@
 import moment from 'moment-timezone'
 
-export const getUtcDate = (date) => {
-  return date.getDate()
+export const getJstMoment = (date) => {
+  let momentJst = moment.tz(date, 'Asia/Tokyo')
+  return momentJst
 }
 
-export const getJstDate = (date) => {
 
-
-  return date
-}
-
-export const testMoment = () => {
-}
