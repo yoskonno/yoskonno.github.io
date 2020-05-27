@@ -1,8 +1,8 @@
-export const sum = (a, b) => {
-  return a + b
+
+export const getZDate = (date) => {
+  return date.getDate()
 }
 
-export const getDateToday = () => {
-  const now = new Date()
-  return now.getDate()
+export const getJstDate = (date) => {
+  return date.getDate()
 }
