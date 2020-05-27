@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { getPathFromDate, getYearAndMonthString } from './TimeHelper'
+import { getPathFromDate, getYearAndMonthString } from './TimeHelperFoo'
 
 const normalTime = new Date('2020-03-05T13:48:00.000Z') 
 const almostMidnightTime = new Date('2020-03-10T23:48:00.000Z')

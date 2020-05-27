@@ -2,7 +2,7 @@ const _ = require('lodash')
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { paginate } = require('gatsby-awesome-pagination')
-const { getPathFromDate, getYearAndMonthString } = require('./src/lib/helper/TimeHelper')
+const { getPathFromDate, getYearAndMonthString } = require('./src/lib/helper/TimeHelperFoo')
 
 const getOnlyPublished = edges =>
   _.filter(edges, ({ node }) => node.status === 'publish')

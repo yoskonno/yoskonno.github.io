@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
 import _ from 'lodash'
-import { getYearAndMonthString } from '../lib/helper/TimeHelper'
+import { getYearAndMonthString } from '../lib/helper/TimeHelperFoo'
 
 const Archives = () => (
   <StaticQuery
