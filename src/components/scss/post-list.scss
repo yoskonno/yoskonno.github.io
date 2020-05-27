@@ -4,15 +4,11 @@
   justify-content: flex-start;
   width: 100%;
 
-  &__item {
-    border: 1px solid #f1f1f1;
-    border-radius: 6px;
-    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.07);
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 15px;
-    margin-right: 1%;
+  &__item-wrapper {
+    display: block;
     width: 32%;
+    margin-right: 1%;
+    margin-bottom: 15px;
 
     @include mq-down(lg) {
       margin-right: 2%;
@@ -23,6 +19,15 @@
       margin-right: 0;
       width: 100%;
     }
+  }
+
+  &__item {
+    border: 1px solid #f1f1f1;
+    border-radius: 6px;
+    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.07);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
 
   &__thumbnail {

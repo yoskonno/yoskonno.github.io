@@ -33,43 +33,44 @@ export default class IndexPage extends React.Component {
               }
 
               return (
-                <Link
-                  className="post-list__item"
-                  key={post.id}
-                  to={pathFromDate}
-                >
-                  <div className="post-list__thumbnail" style={backgroundImageStyle} />
-                  <div className="post-list__main-area">
-                    <h4 className="post-list__title">
-                      {post.title}
-                    </h4>
-                    <p className="post-list__small">
-                      {post.date}
-                    </p>
-                    <p className="post-list__small">
-                      posted by
-                      {' '}
-                      <Link to={`/author/${post.author.slug}`}>
-                        {post.author.name}
-                      </Link>
-                    </p>
-                    <div
-                      className="post-list__excerpt"
-                      dangerouslySetInnerHTML={{
-                        __html: post.excerpt.replace(/<p class="link-more.*/, '').replace('[&hellip;]', '...'),
-                      }}
-                    />
-                    <div className="post-list__button-area">
-                      <Link
-                        className="button is-small post-list__button"
-                        to={pathFromDate}
-                      >
-                        続きを読む →
-                      </Link>
+                <div className="post-list__item-wrapper">
+                  <Link
+                    className="post-list__item"
+                    key={post.id}
+                    to={pathFromDate}
+                  >
+                    <div className="post-list__thumbnail" style={backgroundImageStyle} />
+                    <div className="post-list__main-area">
+                      <h4 className="post-list__title">
+                        {post.title}
+                      </h4>
+                      <p className="post-list__small">
+                        {post.date}
+                      </p>
+                      <p className="post-list__small">
+                        posted by
+                        {' '}
+                        <Link to={`/author/${post.author.slug}`}>
+                          {post.author.name}
+                        </Link>
+                      </p>
+                      <div
+                        className="post-list__excerpt"
+                        dangerouslySetInnerHTML={{
+                          __html: post.excerpt.replace(/<p class="link-more.*/, '').replace('[&hellip;]', '...'),
+                        }}
+                      />
+                      <div className="post-list__button-area">
+                        <Link
+                          className="button is-small post-list__button"
+                          to={pathFromDate}
+                        >
+                          続きを読む →
+                        </Link>
+                      </div>
                     </div>
-                  </div>
-                </Link>
-                
+                  </Link>
+                </div>
               )}
             )}
           </div>
