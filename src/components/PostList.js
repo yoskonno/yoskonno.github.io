@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
-import { getPathFromDate } from '../lib/helper/TimeHelperFoo'
+import { getPathFromDate } from '../lib/helper/TimeHelper'
 
 export default class IndexPage extends React.Component {
   render() {
