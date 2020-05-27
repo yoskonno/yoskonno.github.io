@@ -1,35 +1,41 @@
-import { getJstMoment } from './TimeHelper'
+/* eslint-disable */
+import { getPathFromDate, getYearAndMonthString } from './TimeHelper'
 
-let normalTime = new Date('2020-03-10T13:48:00.000Z') 
-let almostMidnightTime = new Date('2020-03-10T23:48:00.000Z')
+const normalTime = new Date('2020-03-05T13:48:00.000Z') 
+const almostMidnightTime = new Date('2020-03-10T23:48:00.000Z')
 
-// normal date
-
-test('get normalTime date as 10 in JST', () => {
-  expect(getJstMoment(normalTime).date()).toBe(10)
+test('get normalTime pathFromDate as 2020/03/05', () => {
+  expect(getPathFromDate(normalTime)).toBe('2020/03/05')
 })
 
-test('get almostMidnightTime date as 11 in JST', () => {
-  expect(getJstMoment(almostMidnightTime).date()).toBe(11)
+test('get normalTime yearAndMonthString as 2020/03', () => {
+  expect(getYearAndMonthString(normalTime)).toBe('2020/03')
+})
+
+test('get almostMidnightTime pathFromDate as 2020/03/11', () => {
+  expect(getPathFromDate(almostMidnightTime)).toBe('2020/03/11')
+})
+
+test('get almostMidnightTime yearAndMonthString as 2020/03', () => {
+  expect(getYearAndMonthString(almostMidnightTime)).toBe('2020/03')
 })
 
 // end of month
-
 const normalTimeEndOfMonth = new Date('2020-03-31T13:48:00.000Z') 
 const almostMidnightTimeEndOfMonth = new Date('2020-03-31T23:48:00.000Z')
 
-test('get normalTime date as 31 in JST', () => {
-  expect(getJstMoment(normalTimeEndOfMonth).date()).toBe(31)
+test('get normalTimeEndOfMonth pathFromDate as 2020/03/31', () => {
+  expect(getPathFromDate(normalTimeEndOfMonth)).toBe('2020/03/31')
 })
 
-test('get almostMidnightTime date as 1 in JST', () => {
-  expect(getJstMoment(almostMidnightTimeEndOfMonth).date()).toBe(1)
+test('get normalTimeEndOfMonth yearAndMonthString as 2020/03', () => {
+  expect(getYearAndMonthString(normalTimeEndOfMonth)).toBe('2020/03')
 })
 
-test('get normalTime month as 2 in JST', () => {
-  expect(getJstMoment(normalTimeEndOfMonth).month()).toBe(2)
+test('get almostMidnightTimeEndOfMonth pathFromDate as 2020/04/01', () => {
+  expect(getPathFromDate(almostMidnightTimeEndOfMonth)).toBe('2020/04/01')
 })
 
-test('get almostMidnightTime month as 3 in JST', () => {
-  expect(getJstMoment(almostMidnightTimeEndOfMonth).month()).toBe(3)
+test('get almostMidnightTimeEndOfMonth yearAndMonthString as 2020/04', () => {
+  expect(getYearAndMonthString(almostMidnightTimeEndOfMonth)).toBe('2020/04')
 })
