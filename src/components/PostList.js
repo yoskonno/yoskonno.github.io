@@ -5,7 +5,7 @@ import { getPathFromDate } from '../lib/helper/TimeHelper'
 
 export default class IndexPage extends React.Component {
   render() {
-    const { posts, title } = this.props
+    const { posts } = this.props
 
     return (
       <section className="section">
@@ -43,15 +43,16 @@ export default class IndexPage extends React.Component {
                     <h4 className="post-list__title">
                       {post.title}
                     </h4>
-                      <p className="post-list__small">
-                        {post.date}
-                      </p>
-                      <p className="post-list__small">
-                        posted by{' '}
-                        <Link to={`/author/${post.author.slug}`}>
-                          {post.author.name}
-                        </Link>
-                      </p>
+                    <p className="post-list__small">
+                      {post.date}
+                    </p>
+                    <p className="post-list__small">
+                      posted by
+                      {' '}
+                      <Link to={`/author/${post.author.slug}`}>
+                        {post.author.name}
+                      </Link>
+                    </p>
                     <div
                       className="post-list__excerpt"
                       dangerouslySetInnerHTML={{
