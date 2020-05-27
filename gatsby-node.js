@@ -2,6 +2,7 @@ const _ = require('lodash')
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { paginate } = require('gatsby-awesome-pagination')
+const { getPathFromDate, getYearAndMonthString } = require('./src/lib/helper/TimeHelper')
 
 const getOnlyPublished = edges =>
   _.filter(edges, ({ node }) => node.status === 'publish')
@@ -92,10 +93,10 @@ exports.createPages = ({ actions, graphql }) => {
 
         console.log('\n')
         console.log(date)
-        const pathFromDate = `/${date.getFullYear()}/${String(date.getMonth() + 1).padStart(2, '0')}/${String(date.getDate()).padStart(2, '0')}/${decodeURIComponent(post.slug)}`
+        const pathFromDate = `/${getPathFromDate(date)}/${decodeURIComponent(post.slug)}`
 
         // create list of months
-        const yearAndMonth = `${String(date.getFullYear()).padStart(2, '0')}/${String(date.getMonth() + 1).padStart(2, '0')}`
+        const yearAndMonth = getYearAndMonthString(date)
         if (!listOfMonths.includes(yearAndMonth)) {
           listOfMonths.push(yearAndMonth)
         }

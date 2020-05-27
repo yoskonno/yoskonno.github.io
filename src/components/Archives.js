@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
 import _ from 'lodash'
+import { getYearAndMonthString } from '../lib/helper/TimeHelper'
 
 const Archives = () => (
   <StaticQuery
@@ -34,7 +35,7 @@ const Archives = () => (
         const date = new Date(post.date)
 
         // create list of months
-        const yearAndMonth = `${String(date.getFullYear()).padStart(2, '0')}/${String(date.getMonth() + 1).padStart(2, '0')}`
+        const yearAndMonth = getYearAndMonthString(date)
         if (!listOfMonths.includes(yearAndMonth)) {
           listOfMonths.push(yearAndMonth)
         }

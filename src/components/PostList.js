@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
+import { getPathFromDate } from '../lib/helper/TimeHelper'
 
 export default class IndexPage extends React.Component {
   render() {
@@ -12,7 +13,7 @@ export default class IndexPage extends React.Component {
           <div className="post-list">
             {posts.map(({ node: post }) => {
               const date = new Date(post.dateObject)
-              const pathFromDate = `/${date.getFullYear()}/${String(date.getMonth() + 1).padStart(2, '0')}/${String(date.getDate()).padStart(2, '0')}/${decodeURIComponent(post.slug)}`
+              const pathFromDate = `/${getPathFromDate(date)}/${decodeURIComponent(post.slug)}`
               let thumbnailSrc = "/img/mobalab-logo.jpg"
 
               let ratio = 0
