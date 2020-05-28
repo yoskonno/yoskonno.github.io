@@ -1,6 +1,9 @@
+@import '../scss/config/normalize.scss';
 @import '../scss/config/html.scss';
 @import '../scss/config/mixin.scss';
 
-@import '../scss/pagination.scss';
-@import '../scss/post-list.scss';
-@import '../scss/post.scss';
+@import '../scss/layout.scss';
+
+@import '../scss/components/pagination.scss';
+@import '../scss/components/post-list.scss';
+@import '../scss/components/post.scss';

@@ -8,19 +8,23 @@ import './all.sass'
 import './scss/style.scss'
 
 const TemplateWrapper = ({ children }) => (
-  <div>
+  <>
     <Helmet title="Home | Gatsby + WordPress">
 
       <meta name="robots" content="noindex" />
       
     </Helmet>
     <Navbar />
-    <main className="columns is-marginless">
-      <div className="column is-three-quarters">{children}</div>
-      <Sidebar />
+    <main className="main">
+      <div className="main-inner">
+        <div className="contents-container">{children}</div>
+        <aside className="sidebar-container">
+          <Sidebar />
+        </aside>
+      </div>
     </main>
     <Footer />
-  </div>
+  </>
 )
 
 export default TemplateWrapper
