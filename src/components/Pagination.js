@@ -49,10 +49,10 @@ const Pagination = ({ pageContext, pathPrefix }) => {
   )
 }
 
-const getThreePathsBelow = (humanPageNumber, numberOfPages) => {
+const getThreePathsBelow = (humanPageNumber) => {
   const threePathsBelow = []
   console.log(`threePathsBelow: humanPageNumber: ${humanPageNumber}`)
-  for (let i = humanPageNumber - 1; i >= humanPageNumber - 3 ; i-- ) {
+  for (let i = humanPageNumber - 1; i >= humanPageNumber - 3 ; i -= 1 ) {
     if (i > 0) {
       threePathsBelow.push({
         number: i,
@@ -66,7 +66,7 @@ const getThreePathsBelow = (humanPageNumber, numberOfPages) => {
 const getThreePathsAbove = (humanPageNumber, numberOfPages) => {
   const threePathsAbove = []
   console.log(`threePathsAbove: humanPageNumber: ${humanPageNumber}`)
-  for (let i = humanPageNumber + 1; i <= humanPageNumber + 3 ; i++ ) {
+  for (let i = humanPageNumber + 1; i <= humanPageNumber + 3 ; i += 1 ) {
     if (i <= numberOfPages) {
       threePathsAbove.push({
         number: i,

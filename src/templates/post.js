@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
+import hljs from 'highlight.js'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import 'highlight.js/styles/railscasts.css'
-import hljs from 'highlight.js'
 
 class BlogPostTemplate extends React.Component {
   componentDidMount() {
@@ -43,7 +43,7 @@ class BlogPostTemplate extends React.Component {
           <div dangerouslySetInnerHTML={{ __html: replacedContent }} />
           <div style={{ marginTop: `4rem` }}>
             <p>
-              {date} - posted by{' '}
+              {`${date} - posted by `}
               <Link to={`/author/${author.slug}`}>{author.name}</Link>
             </p>
             {categories && categories.length ? (
