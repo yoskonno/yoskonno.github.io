@@ -1,8 +1,14 @@
 import React from 'react'
+import logo from '../img/logo.svg'
 
 const Footer = () => (
   <footer className="footer">
     <div className="footer__inner container">
+      <div className="footer__column">
+        <div className="footer__logo-wrapper">
+          <img className="footer__logo-image" src={logo} alt="もばらぶ" />
+        </div>
+      </div>
       <div className="footer__column">
         <h4 className="footer__column-title">会社概要</h4>
         <p>株式会社もばらぶ</p>

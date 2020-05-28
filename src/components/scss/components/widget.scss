@@ -1,6 +1,10 @@
 .widget {
   margin-bottom: 50px;
-  padding-left: 30px;
+  padding-left: 15px;
+
+  &__title {
+    font-size: 1.2rem;
+  }
 
   ul {
     list-style: none;

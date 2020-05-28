@@ -23,6 +23,7 @@
 
     &:hover {
       transform: scale(1.04);
+      z-index: 10;
     }
   }
 
@@ -54,6 +55,7 @@
   &__title {
     font-size: 1.1rem;
     font-weight: bold;
+    line-height: 1.5;
     margin: 15px 0;
   }
 

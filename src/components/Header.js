@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, StaticQuery, graphql } from 'gatsby'
+import { Link } from 'gatsby'
 import logo from '../img/logo.svg'
 
 const Header = () => (
