@@ -24,64 +24,59 @@ class BlogPostTemplate extends React.Component {
       eyeCatchImageUrl
     } = this.props
 
-    var replace = "brush: ([ a-z]*);";
-    var re = new RegExp(replace,"g");
-  
-    let replacedContent = content.replace(re, "language-$1 hljs");
+    // for code highlighting
+    const replace = "brush: ([ a-z]*);";
+    const re = new RegExp(replace,"g");
+    const replacedContent = content.replace(re, "language-$1 hljs");
 
     return (
-      <section className="section">
-        <div className="container content">
-          <div className="columns">
-            <div className="column is-10 is-offset-1">
-              {eyeCatchImageUrl !== null && (
-                <div className="post__top-image-wrapper">
-                  <img src={eyeCatchImageUrl} alt="" className="post__top-image" />
-                </div>
-              )}
-              <h1 className="post__title">
-                {title}
-              </h1>
-              <div dangerouslySetInnerHTML={{ __html: replacedContent }} />
-              <div style={{ marginTop: `4rem` }}>
-                <p>
-                  {date} - posted by{' '}
-                  <Link to={`/author/${author.slug}`}>{author.name}</Link>
-                </p>
-                {categories && categories.length ? (
-                  <div>
-                    <h4>Categories</h4>
-                    <ul className="taglist">
-                      {categories.map(category => (
-                        <li key={`${category.slug}cat`}>
-                          <Link to={`/categories/${category.slug}/`}>
-                            {category.name}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ) : null}
-                {tags && tags.length ? (
-                  <div>
-                    <h4>Tags</h4>
-                    <ul className="taglist">
-                      {tags.map(tag => (
-                        <li key={`${tag.slug}tag`}>
-                          <Link to={`/tags/${tag.slug}/`}>{tag.name}</Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ) : null}
-              </div>
+      <div className="post">
+        <section className="section">
+          {eyeCatchImageUrl !== null && (
+            <div className="post__top-image-wrapper">
+              <img src={eyeCatchImageUrl} alt="" className="post__top-image" />
             </div>
+          )}
+          <h1 className="post__title">
+            {title}
+          </h1>
+          <div dangerouslySetInnerHTML={{ __html: replacedContent }} />
+          <div style={{ marginTop: `4rem` }}>
+            <p>
+              {date} - posted by{' '}
+              <Link to={`/author/${author.slug}`}>{author.name}</Link>
+            </p>
+            {categories && categories.length ? (
+              <div>
+                <h4>Categories</h4>
+                <ul className="taglist">
+                  {categories.map(category => (
+                    <li key={`${category.slug}cat`}>
+                      <Link to={`/categories/${category.slug}/`}>
+                        {category.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+            {tags && tags.length ? (
+              <div>
+                <h4>Tags</h4>
+                <ul className="taglist">
+                  {tags.map(tag => (
+                    <li key={`${tag.slug}tag`}>
+                      <Link to={`/tags/${tag.slug}/`}>{tag.name}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     )
   }
-  
 }
 
 BlogPostTemplate.propTypes = {
