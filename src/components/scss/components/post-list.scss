@@ -60,6 +60,7 @@
   &__small {
     color: gray;
     font-size: 0.8rem;
+    margin: 0;
 
     a {
       color: #13c4a5;
@@ -68,14 +69,16 @@
 
   &__excerpt {
     margin-top: 15px;
+
+    p {
+      margin: 0;
+    }
   }
 
   &__button-area {
+    display: flex;
+    justify-content: flex-end;
     margin-top: auto;
-    padding-top: 15px;
-  }
-
-  &__button {
-    float: right;
+    padding-top: 10px;
   }
 }

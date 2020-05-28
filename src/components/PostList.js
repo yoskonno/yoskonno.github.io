@@ -14,8 +14,8 @@ export default class IndexPage extends React.Component {
             {posts.map(({ node: post }) => {
               const date = new Date(post.dateObject)
               const pathFromDate = `/${getPathFromDate(date)}/${decodeURIComponent(post.slug)}`
-              let thumbnailSrc = "/img/mobalab-logo.jpg"
 
+              let thumbnailSrc = "/img/mobalab-logo.jpg"
               let ratio = 0
 
               try {
@@ -26,7 +26,6 @@ export default class IndexPage extends React.Component {
               } catch(error) {
                 console.log(error)
               }
-
               const backgroundImageStyle = {
                 backgroundImage: `url(${thumbnailSrc})`,
                 backgroundSize: ratio > 2 ? 'contain' : 'cover'
@@ -62,7 +61,7 @@ export default class IndexPage extends React.Component {
                       />
                       <div className="post-list__button-area">
                         <Link
-                          className="button is-small post-list__button"
+                          className="button button--small"
                           to={pathFromDate}
                         >
                           続きを読む →
