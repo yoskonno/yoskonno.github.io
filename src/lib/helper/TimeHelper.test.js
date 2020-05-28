@@ -1,5 +1,9 @@
 /* eslint-disable */
-import { getPathFromDate, getYearAndMonthString } from './TimeHelper'
+import {
+  getPathFromDate,
+  getYearAndMonthString,
+  getCurrentYearString,
+} from './TimeHelper'
 
 const normalTime = new Date('2020-03-05T13:48:00.000Z') 
 const almostMidnightTime = new Date('2020-03-10T23:48:00.000Z')
@@ -38,4 +42,8 @@ test('get almostMidnightTimeEndOfMonth pathFromDate as 2020/04/01', () => {
 
 test('get almostMidnightTimeEndOfMonth yearAndMonthString as 2020/04', () => {
   expect(getYearAndMonthString(almostMidnightTimeEndOfMonth)).toBe('2020/04')
+})
+
+test('get currentYear', () => {
+  expect(getCurrentYearString()).toBe('2020')
 })

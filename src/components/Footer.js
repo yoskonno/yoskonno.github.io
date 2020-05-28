@@ -1,5 +1,6 @@
 import React from 'react'
 import logo from '../img/logo.svg'
+import { getCurrentYearString } from '../lib/helper/TimeHelper'
 
 const Footer = () => (
   <footer className="footer">
@@ -31,6 +32,12 @@ const Footer = () => (
         <p><a href="https://mobalab.net/recruit/" target="_blank" rel="noopener noreferrer">プロジェクトマネージャー(リモート)</a></p>
         <p><a href="https://mobalab.net/recruit/" target="_blank" rel="noopener noreferrer">ソフトウェアエンジニア(リモート)</a></p>
         <p><a href="https://mobalab.net/recruit/" target="_blank" rel="noopener noreferrer">デザイナー(リモート)</a></p>
+      </div>
+    </div>
+    <div className="footer__copyright-area">
+      <div className="footer__copyright">
+        © Mobalab, KK
+        {` ${getCurrentYearString()}`}
       </div>
     </div>
   </footer>

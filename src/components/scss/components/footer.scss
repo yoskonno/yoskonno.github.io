@@ -1,17 +1,22 @@
 .footer {
-  color: #2d2d2d;
+  background-color: $gray900;
+  color: $footerWhite;
 
   &__inner {
-    border-top: 1px solid rgb(228, 228, 228);
     display: flex;
     justify-content: space-between;
-    padding-top: 20px;
+    padding-top: 50px;
     padding-bottom: 50px;
   }
 
   &__column-title {
+    border-bottom: 2px solid $mint;
+    color: $footerWhite;
+    display: inline-block;
     font-size: 1.2rem;
-    line-height: 2rem;
+    line-height: 1.4rem;
+    margin-bottom: 20px;
+    margin-top: 0;
   }
 
   &__logo-wrapper {
@@ -23,11 +28,24 @@
   }
 
   &__logo-image {
-    height: 90px;
-    width: 90px;
+    height: 120px;
+    width: 120px;
   }
 
   a {
-    color: #2d2d2d;
+    color: $footerWhite;
+  }
+
+  &__copyright-area {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__copyright {
+    color: #828282;
+    font-size: 0.8rem;
+    height: 30px;
+    line-height: 30px;
   }
 }

@@ -14,7 +14,13 @@ const getYearAndMonthString = (date) => {
   return yearAndMonthString
 }
 
+const getCurrentYearString = () => {
+  const jstMoment = moment().tz('Asia/Tokyo')
+  return String(jstMoment.year())
+}
+
 module.exports = {
   getPathFromDate,
-  getYearAndMonthString
+  getYearAndMonthString,
+  getCurrentYearString
 }
