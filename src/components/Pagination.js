@@ -15,7 +15,7 @@ const Pagination = ({ pageContext, pathPrefix }) => {
   return (
     <nav className="pagination" role="navigation">
       {previousPagePath && (
-        <div className="pagination__button-large">
+        <div className="pagination__item pagination__button-large">
           <Link to={previousPagePath} rel="prev">
             Previous
           </Link>
@@ -23,23 +23,23 @@ const Pagination = ({ pageContext, pathPrefix }) => {
       )}
       {threePathsBelow.reverse().map((path) => {
         return (
-          <div className="pagination__button-number">
+          <div className="pagination__item pagination__button-number">
             <a href={path.path}>{path.number}</a>
           </div>
         )
       })}
-      <div className="pagination__button-number pagination__button-number--current">
+      <div className="pagination__item pagination__button-number pagination__button-number--current">
         {humanPageNumber}
       </div>
       {threePathsAbove.map((path) => {
         return (
-          <div className="pagination__button-number">
+          <div className="pagination__item pagination__button-number">
             <a href={path.path}>{path.number}</a>
           </div>
         )
       })}
       {nextPagePath && (
-        <div className="pagination__button-large">
+        <div className="pagination__item pagination__button-large">
           <Link to={nextPagePath} rel="next">
             Next
           </Link>

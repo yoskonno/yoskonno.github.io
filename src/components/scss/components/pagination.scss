@@ -1,3 +1,12 @@
 .pagination {
-    
+  display: flex;
+
+  &__item {
+    color: #13c4a5;
+    margin: 10px 20px;
+  }
+
+  a {
+    color: #2d2d2d;
+  }
 }

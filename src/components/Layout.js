@@ -4,7 +4,6 @@ import Helmet from 'react-helmet'
 import Navbar from './Header'
 import Footer from './Footer'
 import Sidebar from './Sidebar'
-import './all.sass'
 import './scss/style.scss'
 
 const TemplateWrapper = ({ children }) => (
