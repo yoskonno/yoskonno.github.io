@@ -8,74 +8,75 @@ export default class Pagination extends React.Component {
     this.nextPagePath = props.pageContext.nextPagePath
     this.humanPageNumber = props.pageContext.humanPageNumber
     this.numberOfPages = props.pageContext.numberOfPages
-    this.threePathsBelow = []
-    this.threePathsAbove = []
+    
+    this.numbersBelow = []
+    this.pathsBelow = []
+    this.numbersAbove = []
+    this.pathsAbove = []
 
-    this.getThreePathsBelow()
-    this.getThreePathsAbove()
+    this.getPathsBelow()
+    this.getPathsAbove()
   }
 
-  getThreePathsBelow() {
-    const threePathsBelow = []
+  getPathsBelow() {
     for (let i = this.humanPageNumber - 1; i >= this.humanPageNumber - 3 ; i -= 1 ) {
       if (i > 0) {
-        threePathsBelow.push({
-          number: i,
-          path: `/page/${i}`,
-        })
+        this.numbersBelow.push(i)
+        if (i === 1) {
+          this.pathsBelow.push('/')
+        } else {
+          this.pathsBelow.push(`/page/${i}`)
+        }
       }
     }
-    this.threePathsBelow = threePathsBelow
+    this.numbersBelow.reverse()
+    this.pathsBelow.reverse()
   }
   
-  getThreePathsAbove() {
-    const threePathsAbove = []
+  getPathsAbove() {
     for (let i = this.humanPageNumber + 1; i <= this.humanPageNumber + 3 ; i += 1 ) {
       if (i <= this.numberOfPages) {
-        threePathsAbove.push({
-          number: i,
-          path: `/page/${i}`,
-        })
+        this.numbersAbove.push(i)
+        this.pathsAbove.push(`/page/${i}`)
       }
     }
-    this.threePathsAbove = threePathsAbove
   }
 
   render () {
-      return (
-        <nav className="pagination" role="navigation">
-          {this.shouldComponentUpdatepreviousPagePath && (
-          <div className="pagination__item pagination__button-large">
-            <Link to={this.previousPagePath} rel="prev">
-              Previous
-            </Link>
+    return (
+      <div className="pagination" role="navigation">
+        {this.shouldComponentUpdatepreviousPagePath && (
+        <div className="pagination__item pagination__button-large">
+          <Link to={this.previousPagePath} rel="prev">
+            Previous
+          </Link>
+        </div>
+        )}
+        {this.numbersBelow.map((number, index) => {
+        return (
+          <div key={this.pathsBelow[index]} className="pagination__item pagination__button-number">
+            <a href={this.pathsBelow[index]}>{number}</a>
           </div>
-          )}
-          {this.threePathsBelow.reverse().map((path) => {
-          return (
-            <div className="pagination__item pagination__button-number">
-              <a href={path.path}>{path.number}</a>
-            </div>
-            )
-          })}
-          <div className="pagination__item pagination__button-number pagination__button-number--current">
-            {this.humanPageNumber}
-          </div>
-          {this.threePathsAbove.map((path) => {
-          return (
-            <div className="pagination__item pagination__button-number">
-              <a href={path.path}>{path.number}</a>
-            </div>
           )
         })}
-          {this.nextPagePath && (
-          <div className="pagination__item pagination__button-large">
-            <Link to={this.nextPagePath} rel="next">
-              Next
-            </Link>
+        <div className="pagination__item pagination__button-number pagination__button-number--current">
+          {this.humanPageNumber}
+        </div>
+        {this.numbersAbove.map((number, index) => {
+        return (
+          <div key={this.pathsAbove[index]} className="pagination__item pagination__button-number">
+            <a href={this.pathsAbove[index]}>{number}</a>
           </div>
-        )}
-        </nav>
+        )
+      })}
+        {this.nextPagePath && (
+        <div className="pagination__item pagination__button-large">
+          <Link to={this.nextPagePath} rel="next">
+            Next
+          </Link>
+        </div>
+      )}
+      </div>
     )
   }
 }

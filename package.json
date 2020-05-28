@@ -6,6 +6,8 @@
   "dependencies": {
     "@deckdeckgo/highlight-code": "^1.0.4",
     "bulma": "^0.8.2",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "gatsby": "^2.21.21",
     "gatsby-awesome-pagination": "^0.3.3",
     "gatsby-plugin-lodash": "^3.3.1",
