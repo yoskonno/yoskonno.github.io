@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
 import _ from 'lodash'
+import Widget from './Widget'
 import { getYearAndMonthString } from '../lib/helper/TimeHelper'
 
 const Archives = () => (
@@ -41,26 +42,31 @@ const Archives = () => (
         }
       })
       return (
-        <div>
-          <h4>アーカイブ</h4>
-          <ul>
-            {listOfMonths.map((monthWithYear) => {
-              const year = monthWithYear.slice(0, 4)
-              const month = monthWithYear.slice(5, 7)
-              const monthWithYearInJp = `${year}年${month}月`
-              return (
-                <li key={monthWithYear}>
-                  <Link to={`/archives/${monthWithYear}`}>
-                    {monthWithYearInJp}
-                  </Link>
-                </li>
-              )
-            })}
-          </ul>
-        </div>
+        <ul>
+          {listOfMonths.map((monthWithYear) => {
+            const year = monthWithYear.slice(0, 4)
+            const month = monthWithYear.slice(5, 7)
+            const monthWithYearInJp = `${year}年${month}月`
+            return (
+              <li key={monthWithYear}>
+                <Link to={`/archives/${monthWithYear}`}>
+                  {monthWithYearInJp}
+                </Link>
+              </li>
+            )
+          })}
+        </ul>
       )
     }}
   />
 )
 
-export default Archives
+const ArchivesWidget = () => {
+  return (
+    <Widget title="アーカイブ">
+      <Archives />
+    </Widget>
+  )
+}
+
+export default ArchivesWidget

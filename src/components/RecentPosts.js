@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
 import _ from 'lodash'
+import Widget from './Widget'
 
 const RecentPosts = () => (
   <StaticQuery
@@ -29,27 +30,32 @@ const RecentPosts = () => (
           : allPosts
 
       return (
-        <div>
-          <h4>最近の投稿</h4>
-          <ul>
-            {posts.map(({ node: post }) => {
-              const year = String(post.date).slice(0, 4)
-              const month = String(post.date).slice(5, 7)
-              const date = String(post.date).slice(8, 10)
-              return (
-                <li key={post.slug}>
-                  <Link
-                    to={`/${year}/${month}/${date}/${post.slug}`}
-                  >
-                    {post.title}
-                  </Link>
-                </li>
-              )
-            })}
-          </ul>
-        </div>
+        <ul>
+          {posts.map(({ node: post }) => {
+            const year = String(post.date).slice(0, 4)
+            const month = String(post.date).slice(5, 7)
+            const date = String(post.date).slice(8, 10)
+            return (
+              <li key={post.slug}>
+                <Link
+                  to={`/${year}/${month}/${date}/${post.slug}`}
+                >
+                  {post.title}
+                </Link>
+              </li>
+            )
+          })}
+        </ul>
     )}}
   />
 )
 
-export default RecentPosts
+const RecentPostsWidget = () => {
+  return (
+    <Widget title="最近の投稿">
+      <RecentPosts />
+    </Widget>
+  )
+}
+
+export default RecentPostsWidget
