@@ -1,0 +1,31 @@
+.header {
+  display: flex;
+  height: 60px;
+  margin: 0 auto;
+  max-width: 90%;
+  width: 1500px;
+
+  &__logo-link {
+    align-items: center;
+    display: flex;
+  }
+
+  &__logo-image {
+    height: 35px;
+    width: 35px;
+  }
+
+  &__logo-text {
+    font-size: 1.2rem;
+    margin: 0 15px;
+  }
+
+  &__link-container {
+    align-items: center;
+    display: flex;
+  }
+
+  &__link {
+    margin: 0 15px;
+  }
+}
