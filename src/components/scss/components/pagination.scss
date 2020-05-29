@@ -1,5 +1,7 @@
 .pagination {
   display: flex;
+  justify-content: center;
+  margin-right: 30px;
 
   &__item {
     color: #13c4a5;

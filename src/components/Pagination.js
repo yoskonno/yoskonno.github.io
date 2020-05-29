@@ -42,7 +42,7 @@ export default class Pagination extends React.Component {
       <div className="pagination" role="navigation">
         {this.showFirstButton && (
           <div
-            className="pagination__item pagination__button"
+            className="pagination__item"
             data-test="first-button"
           >
             <Link to="/">
