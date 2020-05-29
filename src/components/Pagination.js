@@ -26,8 +26,7 @@ export default class Pagination extends React.Component {
       this.humanPageNumber - 3,
       this.humanPageNumber - 2,
       this.humanPageNumber - 1,
-    ]
-    this.numbersBelow = this.numbersBelow.filter((number) => number > 0)
+    ].filter((number) => number > 0)
   }
   
   getNumbersAbove() {
@@ -35,8 +34,7 @@ export default class Pagination extends React.Component {
       this.humanPageNumber + 1,
       this.humanPageNumber + 2,
       this.humanPageNumber + 3,
-    ]
-    this.numbersAbove = this.numbersAbove.filter((number) => number <= this.numberOfPages)
+    ].filter((number) => number <= this.numberOfPages)
   }
 
   render () {
@@ -54,7 +52,7 @@ export default class Pagination extends React.Component {
         )}
         {this.previousPagePath && (
           <div
-            className="pagination__item pagination__button-large"
+            className="pagination__item"
           >
             <Link to={this.previousPagePath} rel="prev">
               Previous
@@ -72,7 +70,7 @@ export default class Pagination extends React.Component {
         {this.numbersBelow.map((number) => {
           const path = number === 1 ? `/` : `/page/${number}`
           return (
-            <div key={path} className="pagination__item pagination__button-number">
+            <div key={path} className="pagination__item">
               <Link to={path}>
                 {number}
               </Link>
@@ -80,7 +78,7 @@ export default class Pagination extends React.Component {
           )
         })}
         <div
-          className="pagination__item pagination__button-number pagination__button-number--current"
+          className="pagination__item"
         >
           {this.humanPageNumber}
         </div>
@@ -89,7 +87,7 @@ export default class Pagination extends React.Component {
           return (
             <div
               key={path}
-              className="pagination__item pagination__button-number"
+              className="pagination__item"
             >
               <Link to={path}>
                 {number}
@@ -107,7 +105,7 @@ export default class Pagination extends React.Component {
         )}
         {this.nextPagePath && (
           <div
-            className="pagination__item pagination__button-large"
+            className="pagination__item"
           >
             <Link to={this.nextPagePath} rel="next">
               Next
@@ -116,7 +114,7 @@ export default class Pagination extends React.Component {
         )}
         {this.showLastButton && (
           <div
-            className="pagination__item pagination__button"
+            className="pagination__item"
             data-test="last-button"
           >
             <Link to={`page/${this.numberOfPages}`}>
