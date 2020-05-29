@@ -22,8 +22,9 @@ const Header = () => {
   
   const scrollStyle = isTop
     ? { backgroundColor: "#fff" }
-    : { backgroundColor: "#000", opacity: 0.8 }
+    : { backgroundColor: "rgb(249, 249, 249)", opacity: 0.8 }
 
+  // note: Similar to componentDidMount and componentDidUpdate
   useEffect(() => {
     document.addEventListener("scroll", onScroll)
     return () => document.removeEventListener("scroll", onScroll)
@@ -34,25 +35,34 @@ const Header = () => {
       className="header"
       style={scrollStyle}
     >
-      <Link to="/" className="header__logo-link">
-        <img className="header__logo-image" src={logo} alt="もばらぶ" />
-        <p className="header__logo-text">もばらぶエンジニアブログ</p>
-      </Link>
-      <div className="header__link-container">
-        <Link
-          className="header__link"
-          to='/'
-        >
-          Home
-        </Link>
-        <a
-          className="header__link"
-          href='https://mobalab.net/recruit/'
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          採用情報
-        </a>
+      <div className="header__upper">
+        <div className="header__upper-inner container">
+          <p className="header__subtitle">リモート開発メインのソフトウェア開発企業のエンジニアブログです</p>
+        </div>
+      </div>
+      <div className="header__main">
+        <div className="header__main-inner container">
+          <Link to="/" className="header__logo-link">
+            <img className="header__logo-image" src={logo} alt="もばらぶ" />
+            <p className="header__logo-text">もばらぶエンジニアブログ</p>
+          </Link>
+          <div className="header__link-container">
+            <Link
+              className="header__link"
+              to='/'
+            >
+              Home
+            </Link>
+            <a
+              className="header__link"
+              href='https://mobalab.net/recruit/'
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              採用情報
+            </a>
+          </div>
+        </div>
       </div>
     </header>
   )
