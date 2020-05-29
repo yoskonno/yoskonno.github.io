@@ -4,8 +4,11 @@
   margin-right: 30px;
 
   &__item {
+    background-color: #ececec;
+    border-radius: 3px;
     color: #13c4a5;
-    margin: 10px 20px;
+    margin: 0 4px;
+    padding: 5px 15px;
   }
 
   &__dots {

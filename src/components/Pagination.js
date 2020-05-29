@@ -11,8 +11,8 @@ export default class Pagination extends React.Component {
 
     this.showFirstButton = this.humanPageNumber !== 1
     this.showLastButton = this.humanPageNumber !== this.numberOfPages
-    this.showLeftDots = this.humanPageNumber >= 6
-    this.showRightDots = this.humanPageNumber < this.numberOfPages - 4
+    this.showLeftDots = this.humanPageNumber >= 5
+    this.showRightDots = this.humanPageNumber <= this.numberOfPages - 4
     
     this.numbersBelow = []
     this.numbersAbove = []

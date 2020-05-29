@@ -5,7 +5,7 @@ import EnzymeAdapter from "enzyme-adapter-react-16"
 
 import Pagination from './Pagination';
 
-Enzyme.configure({ adapter: new EnzymeAdapter })\
+Enzyme.configure({ adapter: new EnzymeAdapter })
 
 const setup = (humanPageNumber, numberOfPages) => {
   let pageContext = {
@@ -166,8 +166,40 @@ test('hide right dots case 3/3', () => {
   expect(elem.length).toBe(0)
 })
 
+test('hide left dots case 4/50', () => {
+  const wrapper = setup(4, 50)
+  const elem = findByTestAttr(wrapper, 'left-dots')
+  expect(elem.length).toBe(0)
+})
+
 test('show left dots case 5/50', () => {
-  const wrapper = setup(5, 5)
+  const wrapper = setup(5, 50)
   const elem = findByTestAttr(wrapper, 'left-dots')
   expect(elem.length).toBe(1)
 })
+
+test('show left dots case 6/50', () => {
+  const wrapper = setup(6, 50)
+  const elem = findByTestAttr(wrapper, 'left-dots')
+  expect(elem.length).toBe(1)
+})
+
+test('show right dots case 45/50', () => {
+  const wrapper = setup(45, 50)
+  const elem = findByTestAttr(wrapper, 'right-dots')
+  expect(elem.length).toBe(1)
+})
+
+test('show right dots case 46/50', () => {
+  const wrapper = setup(46, 50)
+  const elem = findByTestAttr(wrapper, 'right-dots')
+  expect(elem.length).toBe(1)
+})
+
+
+test('hide right dots case 47/50', () => {
+  const wrapper = setup(47, 50)
+  const elem = findByTestAttr(wrapper, 'right-dots')
+  expect(elem.length).toBe(0)
+})
+
