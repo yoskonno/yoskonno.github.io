@@ -1,118 +1,120 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-export default class Pagination extends React.Component {
-  constructor(props) {
-    super(props);
-    this.previousPagePath = props.pageContext.previousPagePath
-    this.nextPagePath = props.pageContext.nextPagePath
-    this.humanPageNumber = props.pageContext.humanPageNumber
-    this.numberOfPages = props.pageContext.numberOfPages
+const Pagination = ({ pageContext }) => {
+  const {
+    previousPagePath,
+    nextPagePath,
+    humanPageNumber,
+    numberOfPages,
+  } = pageContext
 
-    this.showFirstButton = this.humanPageNumber !== 1
-    this.showLastButton = this.humanPageNumber !== this.numberOfPages
-    this.showLeftDots = this.humanPageNumber >= 5
-    this.showRightDots = this.humanPageNumber <= this.numberOfPages - 4
-    
-    this.numbersBelow = [
-      this.humanPageNumber - 3,
-      this.humanPageNumber - 2,
-      this.humanPageNumber - 1,
-    ].filter((number) => number > 0)
+  const numbersBelow = [
+    humanPageNumber - 3,
+    humanPageNumber - 2,
+    humanPageNumber - 1,
+  ].filter((number) => number > 0)
 
-    this.numbersAbove = [
-      this.humanPageNumber + 1,
-      this.humanPageNumber + 2,
-      this.humanPageNumber + 3,
-    ].filter((number) => number <= this.numberOfPages)
-  }
+  const numbersAbove = [
+    humanPageNumber + 1,
+    humanPageNumber + 2,
+    humanPageNumber + 3,
+  ].filter((number) => number <= numberOfPages)
 
-  render () {
-    return (
-      <div className="pagination" role="navigation">
-        {this.showFirstButton && (
-          <div
-            className="pagination__item"
-            data-test="first-button"
-          >
-            <Link to="/">
-              {'<<'}
-            </Link>
-          </div>
-        )}
-        {this.previousPagePath && (
-          <div
-            className="pagination__item"
-          >
-            <Link to={this.previousPagePath} rel="prev">
-              Previous
-            </Link>
-          </div>
-        )}
-        {this.showLeftDots && (
-          <div
-            className="pagination__item pagination__dots"
-            data-test="left-dots"
-          >
-            ...
-          </div>
-        )}
-        {this.numbersBelow.map((number) => {
-          const path = number === 1 ? `/` : `/page/${number}`
-          return (
-            <div key={path} className="pagination__item">
-              <Link to={path}>
-                {number}
-              </Link>
-            </div>
-          )
-        })}
+  const showFirstButton = humanPageNumber !== 1
+  const showLastButton = humanPageNumber !== numberOfPages
+  const showLeftDots = humanPageNumber >= 5
+  const showRightDots = humanPageNumber <= numberOfPages - 4
+
+  return (
+    <div className="pagination" role="navigation">
+      {showFirstButton && (
+        <div
+          className="pagination__item"
+          data-test="first-button"
+        >
+          <Link to="/">
+            {'<<'}
+          </Link>
+        </div>
+      )}
+      {previousPagePath && (
         <div
           className="pagination__item"
         >
-          {this.humanPageNumber}
+          <Link to={previousPagePath} rel="prev">
+            Previous
+          </Link>
         </div>
-        {this.numbersAbove.map((number) => {
-          const path = `/page/${number}`
-          return (
-            <div
-              key={path}
-              className="pagination__item"
-            >
-              <Link to={path}>
-                {number}
-              </Link>
-            </div>
-          )
-        })}
-        {this.showRightDots && (
+      )}
+      {showLeftDots && (
+        <div
+          className="pagination__item pagination__dots"
+          data-test="left-dots"
+        >
+          ...
+        </div>
+      )}
+      {numbersBelow.map((number) => {
+        const path = number === 1 ? `/` : `/page/${number}`
+        return (
           <div
-            className="pagination__item pagination__dots"
-            data-test="right-dots"
-          >
-            ...
-          </div>
-        )}
-        {this.nextPagePath && (
-          <div
+            key={path}
             className="pagination__item"
           >
-            <Link to={this.nextPagePath} rel="next">
-              Next
+            <Link to={path} data-test='number-below'>
+              {number}
             </Link>
           </div>
-        )}
-        {this.showLastButton && (
-          <div
-            className="pagination__item"
-            data-test="last-button"
-          >
-            <Link to={`page/${this.numberOfPages}`}>
-              {'>>'}
-            </Link>
-          </div>
-        )}
+        )
+      })}
+      <div
+        className="pagination__item"
+      >
+        {humanPageNumber}
       </div>
-    )
-  }
+      {numbersAbove.map((number) => {
+        const path = `/page/${number}`
+        return (
+          <div
+            key={path}
+            className="pagination__item"
+          >
+            <Link to={path} data-test='number-above'>
+              {number}
+            </Link>
+          </div>
+        )
+      })}
+      {showRightDots && (
+        <div
+          className="pagination__item pagination__dots"
+          data-test="right-dots"
+        >
+          ...
+        </div>
+      )}
+      {nextPagePath && (
+        <div
+          className="pagination__item"
+        >
+          <Link to={nextPagePath} rel="next">
+            Next
+          </Link>
+        </div>
+      )}
+      {showLastButton && (
+        <div
+          className="pagination__item"
+          data-test="last-button"
+        >
+          <Link to={`page/${numberOfPages}`}>
+            {'>>'}
+          </Link>
+        </div>
+      )}
+    </div>
+  )
 }
+
+export default Pagination

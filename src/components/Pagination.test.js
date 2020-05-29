@@ -21,14 +21,18 @@ const findByTestAttr = (wrapper, val) => {
 
 test('numbersBelow is 12, 13, 14 case 15/50', () => {
   const wrapper = setup(15, 50)
-  const numbersBelow = wrapper.instance().numbersBelow
-  expect(numbersBelow).toStrictEqual([12, 13, 14])
+  const elems =findByTestAttr(wrapper, 'number-below')
+  expect(elems.getElements()[0].props.children).toBe(12)
+  expect(elems.getElements()[1].props.children).toBe(13)
+  expect(elems.getElements()[2].props.children).toBe(14)
 })
 
 test('numbersAbove is 16, 17, 18 case 15/50', () => {
   const wrapper = setup(15, 50)
-  const numbersAbove = wrapper.instance().numbersAbove
-  expect(numbersAbove).toStrictEqual([16, 17, 18])
+  const elems =findByTestAttr(wrapper, 'number-above')
+  expect(elems.getElements()[0].props.children).toBe(16)
+  expect(elems.getElements()[1].props.children).toBe(17)
+  expect(elems.getElements()[2].props.children).toBe(18)
 })
 
 // show hide first button
@@ -59,15 +63,16 @@ test('show right dots case 15/50', () => {
 
 test('numbersBelow first is 12 case 15/50', () => {
   const wrapper = setup(15, 50)
-  const numbersBelow = wrapper.instance().numbersBelow
-  expect(numbersBelow[0]).toStrictEqual(12)
+  const elems = findByTestAttr(wrapper, 'number-below')
+  expect(elems.getElements()[0].props.children).toBe(12)
 })
 
 test('numbersAbove is 49 50 case 48/50', () => {
   const wrapper = setup(48, 50)
-  const numbersAbove = wrapper.instance().numbersAbove
-  console.log(wrapper.instance().numbersAbove)
-  expect(numbersAbove).toStrictEqual([49, 50])
+  const elems = findByTestAttr(wrapper, 'number-above')
+  expect(elems.getElements()[0].props.children).toBe(49)
+  expect(elems.getElements()[1].props.children).toBe(50)
+  expect(elems.length).toBe(2)
 })
 
 test('show left dots case 48/50', () => {
@@ -84,8 +89,9 @@ test('hide right dots case 48/50', () => {
 
 test('numbersBelow is 1 case 2/50', () => {
   const wrapper = setup(2, 50)
-  const numbersBelow = wrapper.instance().numbersBelow
-  expect(numbersBelow).toStrictEqual([1])
+  const elems = findByTestAttr(wrapper, 'number-below')
+  expect(elems.getElements()[0].props.children).toBe(1)
+  expect(elems.length).toBe(1)
 })
 
 test('hide first button case 1/50', () => {
