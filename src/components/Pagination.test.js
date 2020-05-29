@@ -107,3 +107,69 @@ test('hide left dots case 1/50', () => {
   const elem = findByTestAttr(wrapper, 'left-dots')
   expect(elem.length).toBe(0)
 })
+
+test('hide first button case 1/3', () => {
+  const wrapper = setup(1, 3)
+  const elem = findByTestAttr(wrapper, 'first-button')
+  expect(elem.length).toBe(0)
+})
+
+test('hide left dots case 1/3', () => {
+  const wrapper = setup(1, 3)
+  const elem = findByTestAttr(wrapper, 'left-dots')
+  expect(elem.length).toBe(0)
+})
+
+test('show last button case 1/3', () => {
+  const wrapper = setup(1, 3)
+  const elem = findByTestAttr(wrapper, 'last-button')
+  expect(elem.length).toBe(1)
+})
+
+test('hide right dots case 1/3', () => {
+  const wrapper = setup(1, 3)
+  const elem = findByTestAttr(wrapper, 'right-dots')
+  expect(elem.length).toBe(0)
+})
+
+test('hide left dots case 2/3', () => {
+  const wrapper = setup(2, 3)
+  const elem = findByTestAttr(wrapper, 'left-dots')
+  expect(elem.length).toBe(0)
+})
+
+test('show last button case 2/3', () => {
+  const wrapper = setup(2, 3)
+  const elem = findByTestAttr(wrapper, 'last-button')
+  expect(elem.length).toBe(1)
+})
+
+test('hide right dots case 2/3', () => {
+  const wrapper = setup(2, 3)
+  const elem = findByTestAttr(wrapper, 'right-dots')
+  expect(elem.length).toBe(0)
+})
+
+test('hide left dots case 3/3', () => {
+  const wrapper = setup(3, 3)
+  const elem = findByTestAttr(wrapper, 'left-dots')
+  expect(elem.length).toBe(0)
+})
+
+test('show first button case 3/3', () => {
+  const wrapper = setup(3, 3)
+  const elem = findByTestAttr(wrapper, 'first-button')
+  expect(elem.length).toBe(1)
+})
+
+test('hide last button case 3/3', () => {
+  const wrapper = setup(3, 3)
+  const elem = findByTestAttr(wrapper, 'last-button')
+  expect(elem.length).toBe(0)
+})
+
+test('hide right dots case 3/3', () => {
+  const wrapper = setup(3, 3)
+  const elem = findByTestAttr(wrapper, 'right-dots')
+  expect(elem.length).toBe(0)
+})
