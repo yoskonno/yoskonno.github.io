@@ -5,22 +5,7 @@ import EnzymeAdapter from "enzyme-adapter-react-16"
 
 import Pagination from './Pagination';
 
-Enzyme.configure({ adapter: new EnzymeAdapter })
-
-// if enable to set number of numbers, also add test?
-
-// show hide previous button
-
-// show hide next button
-
-// show hide first button
-
-// show hide last button
-
-// show hide left dots
-
-// show hide right dots
-
+Enzyme.configure({ adapter: new EnzymeAdapter })\
 
 const setup = (humanPageNumber, numberOfPages) => {
   let pageContext = {
@@ -179,4 +164,10 @@ test('hide right dots case 3/3', () => {
   const wrapper = setup(3, 3)
   const elem = findByTestAttr(wrapper, 'right-dots')
   expect(elem.length).toBe(0)
+})
+
+test('show left dots case 5/50', () => {
+  const wrapper = setup(5, 5)
+  const elem = findByTestAttr(wrapper, 'left-dots')
+  expect(elem.length).toBe(1)
 })
