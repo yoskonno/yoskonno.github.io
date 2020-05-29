@@ -91,3 +91,16 @@ test('numbersAbove is 49 50', () => {
   const numbersAbove = wrapper3.instance().numbersAbove
   expect(numbersAbove).toStrictEqual([49, 50])
 })
+
+const pageContext4 = {
+  previousPagePath: '/foo',
+  nextPagePath: '/bar',
+  humanPageNumber: 1,
+  numberOfPages: 50,
+}
+const wrapper4 = shallow(<Pagination pageContext={pageContext4} />)
+test('hide first button case 1/50', () => {
+  const firstButton = wrapper4.find("[data-test='first-button']")
+  console.log(wrapper4.instance().humanPageNumber)
+  expect(firstButton.length).toBe(0)
+})

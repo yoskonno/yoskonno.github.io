@@ -37,7 +37,9 @@ export default class Pagination extends React.Component {
     this.numbersBelow.reverse()
     this.pathsBelow.reverse()
 
-    if (this.numbersBelow.length > 0 && this.numbersBelow[0] !== 1) {
+    console.log(`this.humanPageNumber: ${this.humanPageNumber}`)
+
+    if (this.humanPageNumber !== 1) {
       this.showFirstButton = true
     }
     if (this.pathsBelow.length > 0 && this.pathsBelow[0] > 1) {
@@ -55,7 +57,7 @@ export default class Pagination extends React.Component {
     }
 
     if (this.numbersAbove.length > 0 && this.numbersAbove[-1] !== 1) {
-      this.showFirstButton = true
+      this.showLastButton = true
     }
   }
 
@@ -115,7 +117,7 @@ export default class Pagination extends React.Component {
           </div>
         )}
         {this.showLastButton && (
-          <div className="pagination__item pagination__button" data-test="first-button">
+          <div className="pagination__item pagination__button" data-test="last-button">
             <Link to={`foo${this.numberOfPages}`}>
               {'>>'}
             </Link>
