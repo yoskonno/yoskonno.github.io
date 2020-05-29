@@ -34,8 +34,6 @@ const findByTestAttr = (wrapper, val) => {
   return wrapper.find(`[data-test='${val}']`)
 }
 
-// case humanPageNumber/numberOfPages = 15/50
-
 test('numbersBelow is 12, 13, 14 case 15/50', () => {
   const wrapper = setup(15, 50)
   const numbersBelow = wrapper.instance().numbersBelow
@@ -74,13 +72,13 @@ test('show right dots case 15/50', () => {
   expect(elem.length).toBe(1)
 })
 
-test('numbersBelow first is 12', () => {
+test('numbersBelow first is 12 case 15/50', () => {
   const wrapper = setup(15, 50)
   const numbersBelow = wrapper.instance().numbersBelow
   expect(numbersBelow[0]).toStrictEqual(12)
 })
 
-test('numbersAbove is 49 50', () => {
+test('numbersAbove is 49 50 case 48/50', () => {
   const wrapper = setup(48, 50)
   const numbersAbove = wrapper.instance().numbersAbove
   expect(numbersAbove).toStrictEqual([49, 50])
@@ -90,6 +88,12 @@ test('show left dots case 48/50', () => {
   const wrapper = setup(48, 50)
   const elem = findByTestAttr(wrapper, 'left-dots')
   expect(elem.length).toBe(1)
+})
+
+test('hide right dots case 48/50', () => {
+  const wrapper = setup(48, 50)
+  const elem = findByTestAttr(wrapper, 'right-dots')
+  expect(elem.length).toBe(0)
 })
 
 test('hide first button case 1/50', () => {
