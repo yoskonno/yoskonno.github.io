@@ -23,24 +23,19 @@ Enzyme.configure({ adapter: new EnzymeAdapter })
 
 
 const pageContext = {
-  previousPagePath: '/foo',
-  nextPagePath: '/bar',
   humanPageNumber: 15,
   numberOfPages: 50,
 }
 const wrapper = shallow(<Pagination pageContext={pageContext} />)
 
-test('renders without error', () => {
-  const appComponent = wrapper.find("[data-test='component-app']")
-  expect(appComponent.length).toBe(0)
-})
+// case humanPageNumber/numberOfPages = 15/50
 
-test('numbersBelow is 12, 13, 14', () => {
+test('numbersBelow is 12, 13, 14 case 15/50', () => {
   const numbersBelow = wrapper.instance().numbersBelow
   expect(numbersBelow).toStrictEqual([12, 13, 14])
 })
 
-test('numbersAbove is 16, 17, 18', () => {
+test('numbersAbove is 16, 17, 18 case 15/50', () => {
   const numbersAbove = wrapper.instance().numbersAbove
   expect(numbersAbove).toStrictEqual([16, 17, 18])
 })
@@ -57,17 +52,20 @@ test('show last button case 15/50', () => {
   expect(lastButton.length).toBe(1)
 })
 
-// show hide left dots
+test('show left dots case 15/50', () => {
+  const leftDots = wrapper.find("[data-test='left-dots']")
+  expect(leftDots.length).toBe(1)
+})
 
 // show hide right dots
 
 const pageContext2 = {
-  previousPagePath: '/foo',
-  nextPagePath: '/bar',
   humanPageNumber: 3,
   numberOfPages: 50,
 }
 const wrapper2 = shallow(<Pagination pageContext={pageContext2} />)
+
+// case humanPageNumber/numberOfPages = 3/50
 
 test('numbersBelow first is 1', () => {
   const numbersBelow = wrapper2.instance().numbersBelow
@@ -75,8 +73,6 @@ test('numbersBelow first is 1', () => {
 })
 
 const pageContext3 = {
-  previousPagePath: '/foo',
-  nextPagePath: '/bar',
   humanPageNumber: 48,
   numberOfPages: 50,
 }
@@ -87,15 +83,26 @@ test('numbersAbove is 49 50', () => {
   expect(numbersAbove).toStrictEqual([49, 50])
 })
 
+test('show left dots case 48/50', () => {
+  const leftDots = wrapper.find("[data-test='left-dots']")
+  expect(leftDots.length).toBe(1)
+})
+
 const pageContext4 = {
-  previousPagePath: '/foo',
-  nextPagePath: '/bar',
   humanPageNumber: 1,
   numberOfPages: 50,
 }
 const wrapper4 = shallow(<Pagination pageContext={pageContext4} />)
+
+// case humanPageNumber/numberOfPages = 1/50
+
 test('hide first button case 1/50', () => {
   const firstButton = wrapper4.find("[data-test='first-button']")
   console.log(wrapper4.instance().humanPageNumber)
   expect(firstButton.length).toBe(0)
+})
+
+test('hide left dots case 1/50', () => {
+  const leftDots = wrapper4.find("[data-test='left-dots']")
+  expect(leftDots.length).toBe(0)
 })
