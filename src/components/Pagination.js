@@ -14,22 +14,12 @@ export default class Pagination extends React.Component {
     this.showLeftDots = this.humanPageNumber >= 5
     this.showRightDots = this.humanPageNumber <= this.numberOfPages - 4
     
-    this.numbersBelow = []
-    this.numbersAbove = []
-
-    this.getNumbersBelow()
-    this.getNumbersAbove()
-  }
-
-  getNumbersBelow() {
     this.numbersBelow = [
       this.humanPageNumber - 3,
       this.humanPageNumber - 2,
       this.humanPageNumber - 1,
     ].filter((number) => number > 0)
-  }
-  
-  getNumbersAbove() {
+
     this.numbersAbove = [
       this.humanPageNumber + 1,
       this.humanPageNumber + 2,
