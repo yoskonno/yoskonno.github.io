@@ -5,10 +5,13 @@ import { getPathFromDate } from '../lib/helper/TimeHelper'
 
 export default class IndexPage extends React.Component {
   render() {
-    const { posts } = this.props
+    const { posts, path, title } = this.props
 
     return (
       <section className="section">
+        { path !== '/' && (
+          <h3>{ title }</h3>
+        )}
         <div className="post-list">
           {posts.map(({ node: post }) => {
             const date = new Date(post.dateObject)

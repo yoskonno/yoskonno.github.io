@@ -106,7 +106,7 @@ exports.createPages = ({ actions, graphql }) => {
           path: pathFromDate,
           component: postTemplate,
           context: {
-            id: post.id,
+            id: post.id
           },
         })
       })
@@ -125,17 +125,17 @@ exports.createPages = ({ actions, graphql }) => {
 
         createPage({
           path: `/archives/${monthWithYear}`,
+          month: monthFrom,
+          year: yearFrom,
           component: monthlyArchiveTemplate,
           context: {
             dateFrom,
             dateTo,
-            month: monthWithYear,
+            month: monthFrom,
+            year: yearFrom
           },
         })
       })
-
-      console.log('\n@@@ listOfMonths @@@')
-      console.log(listOfMonths)
 
       // Create a paginated blog, e.g., /, /page/2, /page/3
       paginate({

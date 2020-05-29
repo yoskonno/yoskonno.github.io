@@ -7,12 +7,16 @@ import Pagination from '../components/Pagination'
 
 export default class IndexPage extends React.Component {
   render() {
-    const { data, pageContext } = this.props
+    const { data, pageContext, path } = this.props
     const { edges: posts } = data.allWordpressPost
+
+    const { humanPageNumber, numberOfPages } = pageContext
+
+    const title = `${humanPageNumber} / ${numberOfPages} page`
 
     return (
       <Layout>
-        <PostList posts={posts} title="Latest posts" />
+        <PostList posts={posts} title={title} path={path} />
         <Pagination pageContext={pageContext} pathPrefix="/" />
       </Layout>
     )

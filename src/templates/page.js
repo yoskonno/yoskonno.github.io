@@ -4,11 +4,6 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 
 export default class Page extends React.Component {
-
-  componentDidMount() {
-    console.log('まじか')
-  }
-
   render() {
     const { data } = this.props
     const { wordpressPage: page } = data
