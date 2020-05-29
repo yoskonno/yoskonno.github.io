@@ -74,11 +74,6 @@ test('numbersBelow first is 1', () => {
   expect(numbersBelow[0]).toStrictEqual(1)
 })
 
-test('pathsBelow is /', () => {
-  const pathsBelow = wrapper2.instance().pathsBelow
-  expect(pathsBelow[0]).toStrictEqual('/')
-})
-
 const pageContext3 = {
   previousPagePath: '/foo',
   nextPagePath: '/bar',
