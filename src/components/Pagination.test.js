@@ -22,10 +22,10 @@ Enzyme.configure({ adapter: new EnzymeAdapter })
 // show hide right dots
 
 
-const setup = (humanPageNumber) => {
+const setup = (humanPageNumber, numberOfPages) => {
   let pageContext = {
     humanPageNumber: humanPageNumber,
-    numberOfPages: 50,
+    numberOfPages: numberOfPages,
   }
   return shallow(<Pagination pageContext={pageContext} />)
 }
@@ -37,69 +37,69 @@ const findByTestAttr = (wrapper, val) => {
 // case humanPageNumber/numberOfPages = 15/50
 
 test('numbersBelow is 12, 13, 14 case 15/50', () => {
-  const wrapper = setup(15)
+  const wrapper = setup(15, 50)
   const numbersBelow = wrapper.instance().numbersBelow
   expect(numbersBelow).toStrictEqual([12, 13, 14])
 })
 
 test('numbersAbove is 16, 17, 18 case 15/50', () => {
-  const wrapper = setup(15)
+  const wrapper = setup(15, 50)
   const numbersAbove = wrapper.instance().numbersAbove
   expect(numbersAbove).toStrictEqual([16, 17, 18])
 })
 
 // show hide first button
 test('show first button case 15/50', () => {
-  const wrapper = setup(15)
+  const wrapper = setup(15, 50)
   const elem =findByTestAttr(wrapper, 'first-button')
   expect(elem.length).toBe(1)
 })
 
 // show hide last button
 test('show last button case 15/50', () => {
-  const wrapper = setup(15)
+  const wrapper = setup(15, 50)
   const elem = findByTestAttr(wrapper, 'last-button')
   expect(elem.length).toBe(1)
 })
 
 test('show left dots case 15/50', () => {
-  const wrapper = setup(15)
+  const wrapper = setup(15, 50)
   const elem = findByTestAttr(wrapper, 'left-dots')
   expect(elem.length).toBe(1)
 })
 
 test('show right dots case 15/50', () => {
-  const wrapper = setup(15)
+  const wrapper = setup(15, 50)
   const elem = findByTestAttr(wrapper, 'right-dots')
   expect(elem.length).toBe(1)
 })
 
 test('numbersBelow first is 12', () => {
-  const wrapper = setup(15)
+  const wrapper = setup(15, 50)
   const numbersBelow = wrapper.instance().numbersBelow
   expect(numbersBelow[0]).toStrictEqual(12)
 })
 
 test('numbersAbove is 49 50', () => {
-  const wrapper = setup(48)
+  const wrapper = setup(48, 50)
   const numbersAbove = wrapper.instance().numbersAbove
   expect(numbersAbove).toStrictEqual([49, 50])
 })
 
 test('show left dots case 48/50', () => {
-  const wrapper = setup(48)
+  const wrapper = setup(48, 50)
   const elem = findByTestAttr(wrapper, 'left-dots')
   expect(elem.length).toBe(1)
 })
 
 test('hide first button case 1/50', () => {
-  const wrapper = setup(1)
+  const wrapper = setup(1, 50)
   const elem = findByTestAttr(wrapper, 'first-button')
   expect(elem.length).toBe(0)
 })
 
 test('hide left dots case 1/50', () => {
-  const wrapper = setup(1)
+  const wrapper = setup(1, 50)
   const elem = findByTestAttr(wrapper, 'left-dots')
   expect(elem.length).toBe(0)
 })
