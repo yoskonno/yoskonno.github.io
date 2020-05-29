@@ -81,6 +81,7 @@ test('numbersBelow first is 12 case 15/50', () => {
 test('numbersAbove is 49 50 case 48/50', () => {
   const wrapper = setup(48, 50)
   const numbersAbove = wrapper.instance().numbersAbove
+  console.log(wrapper.instance().numbersAbove)
   expect(numbersAbove).toStrictEqual([49, 50])
 })
 
@@ -94,6 +95,12 @@ test('hide right dots case 48/50', () => {
   const wrapper = setup(48, 50)
   const elem = findByTestAttr(wrapper, 'right-dots')
   expect(elem.length).toBe(0)
+})
+
+test('numbersBelow is 1 case 2/50', () => {
+  const wrapper = setup(2, 50)
+  const numbersBelow = wrapper.instance().numbersBelow
+  expect(numbersBelow).toStrictEqual([1])
 })
 
 test('hide first button case 1/50', () => {

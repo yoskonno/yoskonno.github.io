@@ -22,20 +22,21 @@ export default class Pagination extends React.Component {
   }
 
   getNumbersBelow() {
-    for (let i = this.humanPageNumber - 1; i >= this.humanPageNumber - 3 ; i -= 1 ) {
-      if (i > 0) {
-        this.numbersBelow.push(i)
-      }
-    }
-    this.numbersBelow.reverse()
+    this.numbersBelow = [
+      this.humanPageNumber - 3,
+      this.humanPageNumber - 2,
+      this.humanPageNumber - 1,
+    ]
+    this.numbersBelow = this.numbersBelow.filter((number) => number > 0)
   }
   
   getNumbersAbove() {
-    for (let i = this.humanPageNumber + 1; i <= this.humanPageNumber + 3 ; i += 1 ) {
-      if (i <= this.numberOfPages) {
-        this.numbersAbove.push(i)
-      }
-    }
+    this.numbersAbove = [
+      this.humanPageNumber + 1,
+      this.humanPageNumber + 2,
+      this.humanPageNumber + 3,
+    ]
+    this.numbersAbove = this.numbersAbove.filter((number) => number <= this.numberOfPages)
   }
 
   render () {
