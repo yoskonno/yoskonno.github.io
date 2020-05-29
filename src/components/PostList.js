@@ -9,7 +9,7 @@ export default class IndexPage extends React.Component {
 
     return (
       <section className="section">
-        { path !== '/' && (
+        { path !== '/' && title !== undefined && (
           <h3>{ title }</h3>
         )}
         <div className="post-list">

@@ -33,7 +33,7 @@ const Pagination = ({ pageContext }) => {
           className="pagination__item"
           data-test="first-button"
         >
-          <Link to="/">
+          <Link to='/'>
             {'<<'}
           </Link>
         </div>

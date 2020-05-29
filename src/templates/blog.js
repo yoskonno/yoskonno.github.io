@@ -10,14 +10,10 @@ export default class IndexPage extends React.Component {
     const { data, pageContext, path } = this.props
     const { edges: posts } = data.allWordpressPost
 
-    const { humanPageNumber, numberOfPages } = pageContext
-
-    const title = `${humanPageNumber} / ${numberOfPages} page`
-
     return (
       <Layout>
-        <PostList posts={posts} title={title} path={path} />
-        <Pagination pageContext={pageContext} pathPrefix="/" />
+        <PostList posts={posts} path={path} />
+        <Pagination pageContext={pageContext} />
       </Layout>
     )
   }

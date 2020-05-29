@@ -6,7 +6,7 @@ import PostList from '../components/PostList'
 
 const MonthlyArchive = props => {
   const { data, pageContext } = props
-  const { edges: posts, totalCount } = data.allWordpressPost
+  const { edges: posts } = data.allWordpressPost
   const { title: siteTitle } = data.site.siteMetadata
   const { month, year } = pageContext
   const title = `${year}年${month}月の記事一覧`

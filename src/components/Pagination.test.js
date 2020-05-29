@@ -25,6 +25,7 @@ test('numbersBelow is 12, 13, 14 case 15/50', () => {
   expect(elems.getElements()[0].props.children).toBe(12)
   expect(elems.getElements()[1].props.children).toBe(13)
   expect(elems.getElements()[2].props.children).toBe(14)
+  expect(elems.length).toBe(3)
 })
 
 test('numbersAbove is 16, 17, 18 case 15/50', () => {
@@ -33,6 +34,7 @@ test('numbersAbove is 16, 17, 18 case 15/50', () => {
   expect(elems.getElements()[0].props.children).toBe(16)
   expect(elems.getElements()[1].props.children).toBe(17)
   expect(elems.getElements()[2].props.children).toBe(18)
+  expect(elems.length).toBe(3)
 })
 
 // show hide first button
