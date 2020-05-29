@@ -14,6 +14,11 @@ export default class Pagination extends React.Component {
     this.numbersAbove = []
     this.pathsAbove = []
 
+    this.showFirstButton = false
+    this.showLastButton = false
+    this.showLeftDots = false
+    this.showRightDots = false
+
     this.getPathsBelow()
     this.getPathsAbove()
   }
@@ -31,6 +36,14 @@ export default class Pagination extends React.Component {
     }
     this.numbersBelow.reverse()
     this.pathsBelow.reverse()
+
+    if (this.numbersBelow.length > 0 && this.numbersBelow[0] !== 1) {
+      this.showFirstButton = true
+    }
+    if (this.pathsBelow.length > 0 && this.pathsBelow[0] > 1) {
+      //this.showFirstButton = true
+    }
+
   }
   
   getPathsAbove() {
@@ -40,22 +53,40 @@ export default class Pagination extends React.Component {
         this.pathsAbove.push(`/page/${i}`)
       }
     }
+
+    if (this.numbersAbove.length > 0 && this.numbersAbove[-1] !== 1) {
+      this.showFirstButton = true
+    }
   }
 
   render () {
     return (
       <div className="pagination" role="navigation">
-        {this.shouldComponentUpdatepreviousPagePath && (
-        <div className="pagination__item pagination__button-large">
-          <Link to={this.previousPagePath} rel="prev">
-            Previous
-          </Link>
-        </div>
+        {this.showFirstButton && (
+          <div className="pagination__item pagination__button" data-test="first-button">
+            <Link to="/">
+              {'<<'}
+            </Link>
+          </div>
+        )}
+        {this.previousPagePath && (
+          <div className="pagination__item pagination__button-large">
+            <Link to={this.previousPagePath} rel="prev">
+              Previous
+            </Link>
+          </div>
+        )}
+        {this.showLeftDots && (
+          <div className="pagination__item pagination__dots">
+            ...
+          </div>
         )}
         {this.numbersBelow.map((number, index) => {
         return (
           <div key={this.pathsBelow[index]} className="pagination__item pagination__button-number">
-            <a href={this.pathsBelow[index]}>{number}</a>
+            <Link to={this.pathsBelow[index]}>
+              {number}
+            </Link>
           </div>
           )
         })}
@@ -63,19 +94,33 @@ export default class Pagination extends React.Component {
           {this.humanPageNumber}
         </div>
         {this.numbersAbove.map((number, index) => {
-        return (
-          <div key={this.pathsAbove[index]} className="pagination__item pagination__button-number">
-            <a href={this.pathsAbove[index]}>{number}</a>
+          return (
+            <div key={this.pathsAbove[index]} className="pagination__item pagination__button-number">
+              <Link to={this.pathsAbove[index]}>
+                {number}
+              </Link>
+            </div>
+          )
+        })}
+        {this.showRightDots && (
+          <div className="pagination__item pagination__dots">
+            ...
           </div>
-        )
-      })}
+        )}
         {this.nextPagePath && (
-        <div className="pagination__item pagination__button-large">
-          <Link to={this.nextPagePath} rel="next">
-            Next
-          </Link>
-        </div>
-      )}
+          <div className="pagination__item pagination__button-large">
+            <Link to={this.nextPagePath} rel="next">
+              Next
+            </Link>
+          </div>
+        )}
+        {this.showLastButton && (
+          <div className="pagination__item pagination__button" data-test="first-button">
+            <Link to={`foo${this.numberOfPages}`}>
+              {'>>'}
+            </Link>
+          </div>
+        )}
       </div>
     )
   }

@@ -17,6 +17,10 @@ Enzyme.configure({ adapter: new EnzymeAdapter })
 
 // show hide last button
 
+// show hide left dots
+
+// show hide right dots
+
 
 const pageContext = {
   previousPagePath: '/foo',
@@ -31,15 +35,31 @@ test('renders without error', () => {
   expect(appComponent.length).toBe(0)
 })
 
-test('threeNumbersBelow is 12, 13, 14', () => {
-  const threeNumbersBelow = wrapper.instance().threeNumbersBelow
-  expect(threeNumbersBelow).toStrictEqual([12, 13, 14])
+test('numbersBelow is 12, 13, 14', () => {
+  const numbersBelow = wrapper.instance().numbersBelow
+  expect(numbersBelow).toStrictEqual([12, 13, 14])
 })
 
-test('threeNumbersAbove is 16, 17, 18', () => {
-  const threeNumbersAbove = wrapper.instance().threeNumbersAbove
-  expect(threeNumbersAbove).toStrictEqual([16, 17, 18])
+test('numbersAbove is 16, 17, 18', () => {
+  const numbersAbove = wrapper.instance().numbersAbove
+  expect(numbersAbove).toStrictEqual([16, 17, 18])
 })
+
+// show hide first button
+test('show first button case 15/50', () => {
+  const firstButton = wrapper.find("[data-test='first-button']")
+  expect(firstButton.length).toBe(1)
+})
+
+// show hide last button
+test('show last button case 15/50', () => {
+  const lastButton = wrapper.find("[data-test='last-button']")
+  expect(lastButton.length).toBe(1)
+})
+
+// show hide left dots
+
+// show hide right dots
 
 const pageContext2 = {
   previousPagePath: '/foo',
@@ -49,14 +69,14 @@ const pageContext2 = {
 }
 const wrapper2 = shallow(<Pagination pageContext={pageContext2} />)
 
-test('threeNumbersBelow first is 1', () => {
-  const threeNumbersBelow = wrapper2.instance().threeNumbersBelow
-  expect(threeNumbersBelow[0]).toStrictEqual(1)
+test('numbersBelow first is 1', () => {
+  const numbersBelow = wrapper2.instance().numbersBelow
+  expect(numbersBelow[0]).toStrictEqual(1)
 })
 
-test('threePathsBelow is /', () => {
-  const threePathsBelow = wrapper2.instance().threePathsBelow
-  expect(threePathsBelow[0]).toStrictEqual('/')
+test('pathsBelow is /', () => {
+  const pathsBelow = wrapper2.instance().pathsBelow
+  expect(pathsBelow[0]).toStrictEqual('/')
 })
 
 const pageContext3 = {
@@ -67,7 +87,7 @@ const pageContext3 = {
 }
 const wrapper3 = shallow(<Pagination pageContext={pageContext3} />)
 
-test('threeNumbersAbove is 49 50', () => {
-  const threeNumbersAbove = wrapper3.instance().threeNumbersAbove
-  expect(threeNumbersAbove).toStrictEqual([49, 50])
+test('numbersAbove is 49 50', () => {
+  const numbersAbove = wrapper3.instance().numbersAbove
+  expect(numbersAbove).toStrictEqual([49, 50])
 })

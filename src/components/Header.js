@@ -9,12 +9,12 @@ const Header = () => (
       <p className="header__logo-text">もばらぶエンジニアブログ</p>
     </Link>
     <div className="header__link-container">
-      <a
+      <Link
         className="header__link"
-        href='/'
+        to='/'
       >
         Home
-      </a>
+      </Link>
       <a
         className="header__link"
         href='https://mobalab.net/recruit/'
