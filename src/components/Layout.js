@@ -8,6 +8,8 @@ import './scss/style.scss'
 
 const TemplateWrapper = ({ children }) => {
 
+  const HEADER_HEIGHT = 117
+
   const scrollTop = () => {
     return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
   };
@@ -18,9 +20,12 @@ const TemplateWrapper = ({ children }) => {
   const onScroll = () => {
 
     const position = scrollTop()
-    if (position >= 117) {
+    if (position >= HEADER_HEIGHT * 3) {
       setIsTop(false)
-      setHeaderOffset((position - 117 -117 - 117)) // 117)
+      setHeaderOffset( HEADER_HEIGHT * -1 )
+    } else if (position >= HEADER_HEIGHT) {
+      setIsTop(false)
+      setHeaderOffset(position * 0.5 - HEADER_HEIGHT * 2.5)
     } else {
       setIsTop(true)
     }
@@ -30,9 +35,8 @@ const TemplateWrapper = ({ children }) => {
     ? { backgroundColor: "#fff" }
     : { backgroundColor: "rgb(249, 249, 249)", opacity: 0.8, marginTop: `${headerOffset}px`, position: 'fixed' }
 
-  const marginTopMain = isTop ? { marginTop: 0 } : { marginTop: '117px'}
+  const marginTopMain = isTop ? { marginTop: 0 } : { marginTop: `${HEADER_HEIGHT}px`}
 
-  // note: Similar to componentDidMount and componentDidUpdate
   useEffect(() => {
     document.addEventListener("scroll", onScroll)
     return () => document.removeEventListener("scroll", onScroll)
