@@ -1,37 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Link } from 'gatsby'
 import logo from '../img/logo.svg'
 
 const Header = (props) => {
-
-  /*
-  const scrollTop = () => {
-    return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
-  };
-
-  const [isTop, setIsTop] = useState(true)
-  const [headerOffset, setHeaderOffset] = useState(0)
-
-  const onScroll = () => {
-
-    const position = scrollTop()
-    if (position >= 117) {
-      setIsTop(false)
-      setHeaderOffset((position - 117 - 117)) // 117)
-    } else {
-      setIsTop(true)
-    }
-  }
-  
-  const scrollStyle = isTop
-    ? { backgroundColor: "#fff" }
-    : { backgroundColor: "rgb(249, 249, 249)", opacity: 0.8, marginTop: `${headerOffset}px`, position: 'fixed' }
-
-  // note: Similar to componentDidMount and componentDidUpdate
-  useEffect(() => {
-    document.addEventListener("scroll", onScroll)
-    return () => document.removeEventListener("scroll", onScroll)
-  })*/
 
   const { scrollStyle } = props
 

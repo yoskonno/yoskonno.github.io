@@ -20,7 +20,7 @@ const TemplateWrapper = ({ children }) => {
     const position = scrollTop()
     if (position >= 117) {
       setIsTop(false)
-      setHeaderOffset((position - 117 - 117)) // 117)
+      setHeaderOffset((position - 117 -117 - 117)) // 117)
     } else {
       setIsTop(true)
     }
