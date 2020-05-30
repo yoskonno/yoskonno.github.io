@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'gatsby'
 import logo from '../img/logo.svg'
 
-const Header = () => {
+const Header = (props) => {
 
+  /*
   const scrollTop = () => {
     return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
   };
@@ -30,7 +31,9 @@ const Header = () => {
   useEffect(() => {
     document.addEventListener("scroll", onScroll)
     return () => document.removeEventListener("scroll", onScroll)
-  })
+  })*/
+
+  const { scrollStyle } = props
 
   return (
     <header
