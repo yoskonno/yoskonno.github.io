@@ -9,6 +9,7 @@ import './scss/style.scss'
 const TemplateWrapper = ({ children }) => {
 
   const HEADER_HEIGHT = 117
+  const HEADER_HEIGHT_FIXED = 41
 
   const scrollTop = () => {
     return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
@@ -18,24 +19,25 @@ const TemplateWrapper = ({ children }) => {
   const [headerOffset, setHeaderOffset] = useState(0)
 
   const onScroll = () => {
-
     const position = scrollTop()
-    if (position >= HEADER_HEIGHT * 3) {
+    if (position >= HEADER_HEIGHT * 2 - HEADER_HEIGHT_FIXED) {
       setIsTop(false)
-      setHeaderOffset( HEADER_HEIGHT * -1 )
+      setHeaderOffset(HEADER_HEIGHT * -1)
     } else if (position >= HEADER_HEIGHT) {
       setIsTop(false)
-      setHeaderOffset(position * 0.5 - HEADER_HEIGHT * 2.5)
+      setHeaderOffset(position * 0.5 - HEADER_HEIGHT * 1.5 - HEADER_HEIGHT_FIXED)
     } else {
       setIsTop(true)
     }
   }
   
   const scrollStyle = isTop
-    ? { backgroundColor: "#fff" }
-    : { backgroundColor: "rgb(249, 249, 249)", opacity: 0.8, marginTop: `${headerOffset}px`, position: 'fixed' }
+    ? null : { marginTop: `${headerOffset}px`, position: 'fixed' }
 
-  const marginTopMain = isTop ? { marginTop: 0 } : { marginTop: `${HEADER_HEIGHT}px`}
+  const marginTopMain = isTop
+    ? { marginTop: 0 } : { marginTop: `${HEADER_HEIGHT}px`}
+
+  const fixedHeader = !isTop
 
   useEffect(() => {
     document.addEventListener("scroll", onScroll)
@@ -49,10 +51,12 @@ const TemplateWrapper = ({ children }) => {
         <meta name="robots" content="noindex" />
         
       </Helmet>
-      <Header scrollStyle={scrollStyle} />
+      <Header scrollStyle={scrollStyle} fixedHeader={fixedHeader} />
       <main className="main">
         <div className="main-inner" style={marginTopMain}>
-          <div className="contents-container">{children}</div>
+          <div className="contents-container">
+            {children}
+          </div>
           <aside className="sidebar-container">
             <Sidebar />
           </aside>

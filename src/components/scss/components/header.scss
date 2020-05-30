@@ -12,6 +12,11 @@
   &__upper {
     border-bottom: 1px solid rgb(238, 238, 238);
     height: 40px;
+
+    &.isFixed {
+      display: none;
+      background-color: red;
+    }
   }
 
   &__upper-inner {
@@ -25,6 +30,10 @@
 
   &__main {
     height: 75px;
+
+    &.isFixed {
+      height: 40px;
+    }
   }
 
   &__main-inner {
@@ -40,11 +49,21 @@
     height: 40px;
     margin-left: 15px;
     width: 40px;
+
+    &.isFixed {
+      height: 25px;
+      width: 25px;
+    }
   }
 
   &__logo-text {
     font-size: 1.8rem;
     margin: 0 30px;
+
+    &.isFixed {
+      font-size: 1.2rem;
+      margin: 0 15px;
+    }
   }
 
   &__link-container {
