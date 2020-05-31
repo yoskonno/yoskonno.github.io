@@ -46,3 +46,13 @@ code {
   padding: .25em .5em;
   word-break: break-all;
 }
+
+.hljs > code {
+  background-color: unset;
+  color: unset;
+  font-family: unset;
+  font-size: unset;
+  font-weight: unset;
+  padding: unset;
+  word-break: unset;
+}
