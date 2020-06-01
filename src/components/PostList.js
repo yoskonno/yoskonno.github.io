@@ -10,7 +10,7 @@ export default class IndexPage extends React.Component {
     return (
       <section className="section">
         { path !== '/' && title !== undefined && (
-          <h3>{ title }</h3>
+          <p className="post-list__section-title">{ title }</p>
         )}
         <div className="post-list">
           {posts.map(({ node: post }) => {
