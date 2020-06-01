@@ -1,5 +1,6 @@
 .main-inner {
   display: flex;
+  flex-wrap: wrap;
   margin: 0 auto;
   max-width: 90%;
   padding-bottom: 50px;
@@ -15,10 +16,18 @@
 
 .contents-container {
   width: 75%;
+
+  @include mq-down(lg) {
+    width: 100%;
+  }
 }
 
 .sidebar-container {
   width: 25%;
+
+  @include mq-down(lg) {
+    width: 100%;
+  }
 }
 
 .section {

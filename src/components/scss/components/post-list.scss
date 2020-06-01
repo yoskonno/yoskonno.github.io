@@ -12,7 +12,8 @@
     transition: all .3s ease-out;
 
     @include mq-down(lg) {
-      margin-right: 2%;
+      margin-left: 1%;
+      margin-right: 1%;
       width: 48%;
     }
 
