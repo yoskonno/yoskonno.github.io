@@ -5,6 +5,10 @@
   max-width: 90%;
   padding-bottom: 50px;
   width: 1500px;
+
+  @include mq-down(md) {
+    max-width: 100%;
+  }
 }
 
 .container {
@@ -17,7 +21,7 @@
 .contents-container {
   width: 75%;
 
-  @include mq-down(lg) {
+  @include mq-down(md) {
     width: 100%;
   }
 }
@@ -25,7 +29,7 @@
 .sidebar-container {
   width: 25%;
 
-  @include mq-down(lg) {
+  @include mq-down(md) {
     width: 100%;
   }
 }

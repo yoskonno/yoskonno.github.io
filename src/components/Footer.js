@@ -6,11 +6,6 @@ const Footer = () => (
   <footer className="footer">
     <div className="footer__inner container">
       <div className="footer__column">
-        <div className="footer__logo-wrapper">
-          <img className="footer__logo-image" src={logo} alt="もばらぶ" />
-        </div>
-      </div>
-      <div className="footer__column">
         <h4 className="footer__column-title">会社概要</h4>
         <p>株式会社もばらぶ</p>
         <p>設立: 2013年6月</p>
@@ -34,7 +29,10 @@ const Footer = () => (
         <p><a href="https://mobalab.net/recruit/" target="_blank" rel="noopener noreferrer">デザイナー(リモート)</a></p>
       </div>
     </div>
-    <div className="footer__copyright-area">
+    <div className="footer__bottom-area">
+      <div className="footer__logo-wrapper">
+        <img className="footer__logo-image" src={logo} alt="もばらぶ" />
+      </div>
       <div className="footer__copyright">
         © Mobalab, KK
         {` ${getCurrentYearString()}`}
