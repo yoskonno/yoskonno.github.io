@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import logo from '../img/logo.svg'
-import { nominalTypeHack } from 'prop-types'
 
 const Header = (props) => {
 

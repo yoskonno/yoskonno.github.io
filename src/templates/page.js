@@ -31,6 +31,7 @@ export default class Page extends React.Component {
 }
 
 Page.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
   data: PropTypes.object.isRequired,
 }
 
