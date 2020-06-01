@@ -8,7 +8,7 @@ import './scss/style.scss'
 
 const TemplateWrapper = ({ children }) => {
 
-  const HEADER_HEIGHT = 117
+  const HEADER_HEIGHT = window.innerWidth < 1024 ? 171 : 117
   const HEADER_HEIGHT_FIXED = 41
 
   const scrollTop = () => {
@@ -19,8 +19,10 @@ const TemplateWrapper = ({ children }) => {
   const [headerOffset, setHeaderOffset] = useState(0)
 
   const onScroll = () => {
+    
     const position = scrollTop()
-    if (position >= HEADER_HEIGHT * 2 - HEADER_HEIGHT_FIXED) {
+
+    if (position >= HEADER_HEIGHT + HEADER_HEIGHT_FIXED * 2) {
       setIsTop(false)
       setHeaderOffset(HEADER_HEIGHT * -1)
     } else if (position >= HEADER_HEIGHT) {

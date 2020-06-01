@@ -6,7 +6,7 @@ const Header = (props) => {
 
   const { scrollStyle, fixedHeader } = props
 
-  const isFixedClass = fixedHeader ? 'isFixed' : ''; 
+  const isFixedClass = fixedHeader ? 'isFixed' : '';
 
   return (
     <header
