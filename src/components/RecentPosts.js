@@ -7,7 +7,7 @@ const RecentPosts = () => (
   <StaticQuery
     query={graphql`
       query {
-        allWordpressPost(sort: { fields: date }, limit: 5) {
+        allWordpressPost(sort: { fields: date, order: DESC }, limit: 5) {
           edges {
             node {
               title
