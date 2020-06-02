@@ -13,6 +13,7 @@ const Banner = ({ isSmall }) => {
     <>
       { isSmall && showSidebarBanner && (
         <a
+          className="banner__image-wrapper"
           href="https://mobalab.net/recruit/"
           target="_blank"
           rel="noopener noreferrer"
