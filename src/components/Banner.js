@@ -3,13 +3,19 @@ import Widget from './Widget'
 
 const Banner = ({ isSmall }) => {
 
-  const currentPath = window !== 'undefined' ? window.location.pathname : ''
-  const showSidebarBanner = window !== 'undefined' ? window.innerWidth > 767
+  let currentPath = ''
+  if (typeof window !== 'undefined') {
+    currentPath = window.location.pathname
+  }
+
+  let showSidebarBanner = true
+  if (typeof window !== 'undefined') {
+    showSidebarBanner = window.innerWidth > 767
     || currentPath === '/'
     || currentPath.startsWith('/pages/')
     || currentPath.startsWith('/archives/')
-    : false
-
+  }
+  
   return (
     <>
       { isSmall && showSidebarBanner && (

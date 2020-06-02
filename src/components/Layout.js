@@ -12,7 +12,10 @@ const TemplateWrapper = ({ children }) => {
   const HEADER_HEIGHT_SP = 171
   const HEADER_HEIGHT_FIXED = 41
 
-  const isSp = window !== 'undefined' ? window.innerWidth < 1024 : false
+  let isSp = false
+  if (typeof window !== 'undefined') {
+    isSp = window.innerWidth < 1024
+  }
   const headerHeight = isSp ? HEADER_HEIGHT_SP : HEADER_HEIGHT_PC
 
   const scrollTop = () => {
