@@ -41,13 +41,18 @@ class BlogPostTemplate extends React.Component {
           <h1 className="post__title">
             {title}
           </h1>
+          <p className="post__date-and-author">
+            {`${date} - posted by `}
+            <Link to={`/author/${author.slug}`}>{author.name}</Link>
+          </p>
           <div dangerouslySetInnerHTML={{ __html: replacedContent }} />
+          <p className="post__date-and-author">
+            {`${date} - posted by `}
+            <Link to={`/author/${author.slug}`}>{author.name}</Link>
+          </p>
           <div style={{ marginTop: `4rem` }}>
-            <p>
-              {`${date} - posted by `}
-              <Link to={`/author/${author.slug}`}>{author.name}</Link>
-            </p>
-            {categories && categories.length ? (
+            {/* commenting out categories */}
+            {false && categories && categories.length ? (
               <div>
                 <h4>Categories</h4>
                 <ul className="taglist">
@@ -63,10 +68,10 @@ class BlogPostTemplate extends React.Component {
             ) : null}
             {tags && tags.length ? (
               <div>
-                <h4>Tags</h4>
+                <h3>Tags</h3>
                 <ul className="taglist">
                   {tags.map(tag => (
-                    <li key={`${tag.slug}tag`}>
+                    <li key={`${tag.slug}tag`} className="taglist__item">
                       <Link to={`/tags/${tag.slug}/`}>{tag.name}</Link>
                     </li>
                   ))}

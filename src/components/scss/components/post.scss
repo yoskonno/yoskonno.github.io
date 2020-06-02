@@ -13,6 +13,11 @@
     margin-top: 40px !important;
   }
 
+  &__date-and-author {
+    color: gray;
+    margin: 30px 0;
+  }
+
   &__top-image-wrapper {
     display: flex;
     max-height: 400px;
@@ -43,5 +48,9 @@
     &:hover {
       color: #18d3b1;
     }
+  }
+
+  li {
+    word-break: break-word;
   }
 }

@@ -1,6 +1,11 @@
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 body {
@@ -55,4 +60,8 @@ code {
   font-weight: unset;
   padding: unset;
   word-break: unset;
+}
+
+* {
+  box-sizing: border-box;
 }
