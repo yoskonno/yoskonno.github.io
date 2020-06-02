@@ -52,7 +52,9 @@ const Pagination = ({ pageContext }) => {
           className="pagination__item pagination__dots"
           data-test="left-dots"
         >
-          ...
+          <div className="pagination__non-link-content">
+            ...
+          </div>
         </div>
       )}
       {numbersBelow.map((number) => {
@@ -71,7 +73,9 @@ const Pagination = ({ pageContext }) => {
       <div
         className="pagination__item"
       >
-        {humanPageNumber}
+        <div className="pagination__non-link-content">
+          {humanPageNumber}
+        </div>
       </div>
       {numbersAbove.map((number) => {
         const path = `/page/${number}`
@@ -91,7 +95,9 @@ const Pagination = ({ pageContext }) => {
           className="pagination__item pagination__dots"
           data-test="right-dots"
         >
-          ...
+          <div className="pagination__non-link-content">
+            ...
+          </div>
         </div>
       )}
       {nextPagePath && (
