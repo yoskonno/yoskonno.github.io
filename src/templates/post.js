@@ -96,6 +96,10 @@ BlogPostTemplate.propTypes = {
 const BlogPost = ({ data }) => {
   const { wordpressPost: post } = data
 
+  const replace = "<p>(.*)</p>"
+  const re = new RegExp(replace,"g");
+  const excerpt = post.excerpt.replace(re, "$1").replace('[&hellip;]', '...')
+
   let eyeCatchImageUrl = null
   try {
     eyeCatchImageUrl = post.featured_media.media_details.sizes.medium_large.source_url
@@ -112,7 +116,9 @@ const BlogPost = ({ data }) => {
 
   return (
     <Layout>
-      <Helmet title={`${post.title} | Blog`} />
+      <Helmet title={`${post.title} – もばらぶエンジニアブログ`}>
+        <meta name="description" content={excerpt} />
+      </Helmet>
       <BlogPostTemplate
         content={post.content}
         categories={post.categories}
@@ -146,6 +152,7 @@ export const pageQuery = graphql`
     wordpressPost(id: { eq: $id }) {
       id
       title
+      excerpt
       slug
       content
       dateObject: date

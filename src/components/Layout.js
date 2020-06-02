@@ -57,7 +57,9 @@ const TemplateWrapper = ({ children }) => {
 
   return (
     <>
-      <Helmet title="Home | Gatsby + WordPress">
+      <Helmet title="もばらぶエンジニアブログ – リモート開発メインのソフトウェア開発企業のエンジニアブログです">
+        <html lang="ja" />
+        <meta name="description" content="リモート開発メインのソフトウェア開発企業のエンジニアブログです" />
   
         <meta name="robots" content="noindex" />
         

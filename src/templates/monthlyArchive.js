@@ -13,7 +13,7 @@ const MonthlyArchive = props => {
 
   return (
     <Layout>
-      <Helmet title={`${month} | ${siteTitle}`} />
+      <Helmet title={`${year}年${month}月 - ${siteTitle}`} />
       <PostList posts={posts} title={title} />
     </Layout>
   )
