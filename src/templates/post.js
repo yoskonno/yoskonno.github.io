@@ -4,6 +4,7 @@ import Helmet from 'react-helmet'
 import hljs from 'highlight.js'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
+import { BannerInPost } from '../components/Banner'
 import 'highlight.js/styles/railscasts.css'
 
 class BlogPostTemplate extends React.Component {
@@ -73,6 +74,9 @@ class BlogPostTemplate extends React.Component {
               </div>
             ) : null}
           </div>
+        </section>
+        <section className="section">
+          <BannerInPost isSmall={false} />
         </section>
       </div>
     )
