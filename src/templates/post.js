@@ -28,7 +28,12 @@ class BlogPostTemplate extends React.Component {
     // for code highlighting
     const replace = "brush: ([ a-z]*);";
     const re = new RegExp(replace,"g");
-    const replacedContent = content.replace(re, "language-$1 hljs");
+    let replacedContent = content.replace(re, "language-$1 hljs")
+
+    // for removing iframe compromising...
+    const replaceIframe = "<iframe(.*?)/iframe>"
+    const reIframe = new RegExp(replaceIframe, "g");
+    replacedContent = replacedContent.replace(reIframe, '')
 
     return (
       <div className="post">
