@@ -4,6 +4,16 @@
   padding-left: 15px;
   padding-right: 15px;
 
+  @include mq-down(md) {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  @include mq-down(sm) {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
   &__title {
     font-size: 1.2rem;
   }
