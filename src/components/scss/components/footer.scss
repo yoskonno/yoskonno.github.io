@@ -61,8 +61,7 @@
     align-items: center;
     display: flex;
     justify-content: center;
-    padding: 0 30px;
-
+    padding: 0 50px;
 
     @include mq-down(xl) {
       padding: 0 80px;
