@@ -62,6 +62,7 @@ exports.createPages = ({ actions, graphql }) => {
                 slug
                 status
                 date
+                title
               }
             }
           }
@@ -87,13 +88,21 @@ exports.createPages = ({ actions, graphql }) => {
       const listOfMonths = []
 
       // Iterate over the array of posts
-      _.each(posts, ({ node: post }) => {
+      _.each(posts, ({ node: post }, index) => {
         // Create the Gatsby page for this WordPress post
         const date = new Date(post.date)
 
         console.log('\n')
         console.log(date)
-        const pathFromDate = `/${getPathFromDate(date)}/${decodeURIComponent(post.slug)}`
+        const pathFromDate = `/${getPathFromDate(date)}/${decodeURIComponent(post.slug)}/`
+
+        const nextPost = index < posts.length - 1 ? posts[index + 1] : null
+        const nextPath = nextPost !== null ? `/${getPathFromDate(nextPost.node.date)}/${decodeURIComponent(nextPost.node.slug)}/` : null
+        const nextTitle = nextPost !== null ? nextPost.node.title : null
+
+        const prevPost = index > 0 ? posts[index - 1] : null
+        const prevPath = prevPost !== null ? `/${getPathFromDate(prevPost.node.date)}/${decodeURIComponent(prevPost.node.slug)}/` : null
+        const prevTitle = prevPost !== null ? prevPost.node.title : null
 
         // create list of months
         const yearAndMonth = getYearAndMonthString(date)
@@ -106,7 +115,11 @@ exports.createPages = ({ actions, graphql }) => {
           path: pathFromDate,
           component: postTemplate,
           context: {
-            id: post.id
+            id: post.id,
+            nextPath,
+            nextTitle,
+            prevPath,
+            prevTitle
           },
         })
       })
@@ -172,7 +185,7 @@ exports.createPages = ({ actions, graphql }) => {
       // Create a Gatsby page for each WordPress Category
       _.each(result.data.allWordpressCategory.edges, ({ node: cat }) => {
         createPage({
-          path: `/categories/${cat.slug}/`,
+          path: `/categories/${decodeURIComponent(cat.slug)}/`,
           component: categoriesTemplate,
           context: {
             name: cat.name,
@@ -208,7 +221,7 @@ exports.createPages = ({ actions, graphql }) => {
       // Create a Gatsby page for each WordPress tag
       _.each(result.data.allWordpressTag.edges, ({ node: tag }) => {
         createPage({
-          path: `/tags/${tag.slug}/`,
+          path: `/tags/${decodeURIComponent(tag.slug)}/`,
           component: tagsTemplate,
           context: {
             name: tag.name,

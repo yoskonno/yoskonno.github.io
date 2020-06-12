@@ -4,6 +4,7 @@ import Helmet from 'react-helmet'
 import hljs from 'highlight.js'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
+import NextPreviousPost from '../components/NextPrevioustPost'
 import { BannerInPost } from '../components/Banner'
 import 'highlight.js/styles/railscasts.css'
 
@@ -22,7 +23,8 @@ class BlogPostTemplate extends React.Component {
       title,
       date,
       author,
-      eyeCatchImageUrl
+      eyeCatchImageUrl,
+      pageContext
     } = this.props
 
     // for code highlighting
@@ -88,6 +90,11 @@ class BlogPostTemplate extends React.Component {
         <section className="section">
           <BannerInPost isSmall={false} />
         </section>
+        <section className="section">
+          <NextPreviousPost
+            pageContext={pageContext}
+          />
+        </section>
       </div>
     )
   }
@@ -98,8 +105,12 @@ BlogPostTemplate.propTypes = {
   title: PropTypes.string,
 }
 
-const BlogPost = ({ data }) => {
+const BlogPost = (props) => {
+  const { data, pageContext } = props
   const { wordpressPost: post } = data
+
+  console.log('pageContext @post.js: ')
+  console.log(pageContext)
 
   const replace = "<p>(.*)</p>"
   const re = new RegExp(replace,"g");
@@ -132,6 +143,7 @@ const BlogPost = ({ data }) => {
         date={post.date}
         author={post.author}
         eyeCatchImageUrl={eyeCatchImageUrl}
+        pageContext={pageContext}
       />
     </Layout>
   )

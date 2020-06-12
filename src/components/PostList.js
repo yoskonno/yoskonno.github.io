@@ -6,6 +6,8 @@ import { getPathFromDate } from '../lib/helper/TimeHelper'
 export default class IndexPage extends React.Component {
   render() {
     const { posts, path, title } = this.props
+    console.log('this.props @ PostList.js')
+    console.log(this.props)
 
     return (
       <section className="section">
@@ -15,7 +17,7 @@ export default class IndexPage extends React.Component {
         <div className="post-list">
           {posts.map(({ node: post }) => {
             const date = new Date(post.dateObject)
-            const pathFromDate = `/${getPathFromDate(date)}/${decodeURIComponent(post.slug)}`
+            const pathFromDate = `/${getPathFromDate(date)}/${decodeURIComponent(post.slug)}/`
 
             let thumbnailSrc = "/img/mobalab-logo.jpg"
             let ratio = 0
