@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 import hljs from 'highlight.js'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
-import NextPreviousPost from '../components/NextPrevioustPost'
+import NextPreviousPost from '../components/NextPreviousPost'
 import { BannerInPost } from '../components/Banner'
 import 'highlight.js/styles/railscasts.css'
 
@@ -79,7 +79,7 @@ class BlogPostTemplate extends React.Component {
                 <ul className="taglist">
                   {tags.map(tag => (
                     <li key={`${tag.slug}tag`} className="taglist__item">
-                      <Link to={`/tags/${tag.slug}/`}>{tag.name}</Link>
+                      <Link to={`/tags/${tag.slug}/`} className="taglist__link">{tag.name}</Link>
                     </li>
                   ))}
                 </ul>
@@ -88,12 +88,12 @@ class BlogPostTemplate extends React.Component {
           </div>
         </section>
         <section className="section">
-          <BannerInPost isSmall={false} />
-        </section>
-        <section className="section">
           <NextPreviousPost
             pageContext={pageContext}
           />
+        </section>
+        <section className="section">
+          <BannerInPost isSmall={false} />
         </section>
       </div>
     )

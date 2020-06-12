@@ -1,9 +1,14 @@
 .taglist {
   display: flex;
+  flex-wrap: wrap;
   list-style: none;
   padding: 0;
 
   &__item {
     margin: 0 10px;
+  }
+
+  &__link {
+    word-break: none;
   }
 }
