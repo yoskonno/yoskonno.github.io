@@ -76,13 +76,13 @@ class BlogPostTemplate extends React.Component {
             {tags && tags.length ? (
               <div>
                 <h3>Tags</h3>
-                <ul className="taglist">
+                <div className="tag__container">
                   {tags.map(tag => (
-                    <li key={`${tag.slug}tag`} className="taglist__item">
-                      <Link to={`/tags/${tag.slug}/`} className="taglist__link">{tag.name}</Link>
-                    </li>
+                    <div key={`${tag.slug}tag`} className="tag__item">
+                      <Link to={`/tags/${tag.slug}/`} className="tag__link">{tag.name}</Link>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
             ) : null}
           </div>
