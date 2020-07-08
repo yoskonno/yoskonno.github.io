@@ -21,17 +21,17 @@ const Tags = () => (
     render={data => {
       const allTags = data.allWordpressTag.edges
       return (
-        <ul>
+        <div className="tag__container">
           {allTags.map(({node: tag}) => {
             return (
-              <li key={tag}>
+              <div key={tag} className="tag__item">
                 <Link to={`/tags/${decodeURIComponent(tag.slug)}/`}>
-                  {decodeURIComponent(tag.slug)} count: {tag.count}
+                  {`${decodeURIComponent(tag.slug)} (${tag.count})`}
                 </Link>
-              </li>
+              </div>
             )
           })}
-        </ul>
+        </div>
       )
     }}
   />
