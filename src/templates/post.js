@@ -4,6 +4,7 @@ import Helmet from 'react-helmet'
 import hljs from 'highlight.js'
 import { graphql, Link } from 'gatsby'
 import Async from 'react-async'
+import axios from 'axios'
 import Layout from '../components/Layout'
 import NextPreviousPost from '../components/NextPreviousPost'
 import { BannerInPost } from '../components/Banner'
@@ -12,9 +13,11 @@ import 'highlight.js/styles/railscasts.css'
 class BlogPostTemplate extends React.Component {
   constructor(props) {
     super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       comments: [],
       isLoaded: false,
+      name: 'foo san'
     };
   }
   
@@ -46,6 +49,33 @@ class BlogPostTemplate extends React.Component {
           });
         }
       )
+  }
+
+  handleChange(event) {
+    this.setState({ name: event.target.value });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+
+    const user = {
+      name: this.state.name
+    }
+
+    const formData = new FormData;
+    formData.append('post', '13')
+    formData.append('author_name', 'gatsby-san');
+    formData.append('author_email', 'foo@bar.com');
+    formData.append('content', 'I am asking you a question.');
+
+    console.log('making axios POST !!!')
+
+    axios.post(`https://test.super-fast.net/wp-json/wp/v2/comments?author_name=Your%20Name%20Here&author_email=your-email-address@website-address-here.com&author_name=Your%20Name%20Here&content=Your%20Comment%20Here&post=13`)
+      .then(res => {
+        console.log('axios POST response !!!')
+        console.log(res);
+        console.log(res.data);
+      })
   }
 
   render() {
@@ -136,6 +166,17 @@ class BlogPostTemplate extends React.Component {
         <section className="section">
           <BannerInPost isSmall={false} />
         </section>
+
+        <div>
+          <p>leave comment</p>
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              Person Name:
+              <input type="text" name="name" onChange={this.handleChange} />
+            </label>
+            <button type="submit">Post a comment</button>
+          </form>
+        </div>
       </div>
     )
   }
