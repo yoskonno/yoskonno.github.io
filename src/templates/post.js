@@ -3,16 +3,49 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import hljs from 'highlight.js'
 import { graphql, Link } from 'gatsby'
+import Async from 'react-async'
 import Layout from '../components/Layout'
 import NextPreviousPost from '../components/NextPreviousPost'
 import { BannerInPost } from '../components/Banner'
 import 'highlight.js/styles/railscasts.css'
 
 class BlogPostTemplate extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      comments: [],
+      isLoaded: false,
+    };
+  }
+  
   componentDidMount() {
     document.querySelectorAll("pre").forEach(block => {
       hljs.highlightBlock(block)
     })
+    const { wordpressId } = this.props
+    console.log(`coponent did mount !!!!!!${wordpressId}`)
+    //fetch(`https://engineering.mobalab.net/wp-json/wp/v2/comments?post=${wordpressId}`)
+    fetch(`https://test.super-fast.net/wp-json/wp/v2/comments?post=13`)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          console.log('\n\n FETCHED RESUlT:')
+          console.log(result)
+          this.setState({
+            isLoaded: true,
+            comments: result
+          })
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
   }
 
   render() {
@@ -85,6 +118,14 @@ class BlogPostTemplate extends React.Component {
                 </div>
               </div>
             ) : null}
+            {this.state.comments.length !== 0 && (
+              this.state.comments.map((comment) => {
+              return(<div>{comment.content.rendered}</div>)
+              })
+            )}
+            {this.state.comments.length === 0 && (
+              <div>no comments!</div>
+            )}
           </div>
         </section>
         <section className="section">
@@ -144,6 +185,7 @@ const BlogPost = (props) => {
         author={post.author}
         eyeCatchImageUrl={eyeCatchImageUrl}
         pageContext={pageContext}
+        wordpressId={post.wordpress_id}
       />
     </Layout>
   )
@@ -203,6 +245,7 @@ export const pageQuery = graphql`
         }
         source_url
       }
+      wordpress_id
     }
   }
 `
