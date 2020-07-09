@@ -11,8 +11,8 @@ class Comments extends React.Component {
 
   componentDidMount() {
     const { wordpressId } = this.props
-    fetch(`http://stg-engineering.mobalab.net/wp-json/wp/v2/comments?post=${wordpressId}`)
-    //fetch(`https://test.super-fast.net/wp-json/wp/v2/comments?post=13`)
+    //fetch(`http://stg-engineering.mobalab.net/wp-json/wp/v2/comments?post=${wordpressId}`)
+    fetch(`https://test.super-fast.net/wp-json/wp/v2/comments?post=13`)
       .then(res => res.json())
       .then(
         (result) => {
@@ -43,7 +43,17 @@ class Comments extends React.Component {
         <div>
           <h3>コメント</h3>
           {comments.map((comment) => {
-            return(<div key={comment.id}>{comment.content.rendered}</div>)
+            return(
+              <div key={comment.id}>
+                <div>{`${comment.author_name}さん`}</div>
+                <div>{comment.date}</div>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: comment.content.rendered
+                  }}
+                />
+              </div>
+            )
           })}
         </div>
       )

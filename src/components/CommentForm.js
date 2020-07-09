@@ -26,14 +26,18 @@ class CommentForm extends React.Component {
     const { wordpressId } = this.props
 
     const formData = new FormData;
-    formData.append('post', wordpressId)
+    //formData.append('post', wordpressId)
+    formData.append('post', 13)
     formData.append('author_name', name);
     formData.append('author_email', email);
     formData.append('content', body);
 
     console.log('making axios POST !!!')
 
-    axios.post(`http://stg-engineering.mobalab.net/wp-json/wp/v2/comments`, formData)
+    //axios.post(`http://stg-engineering.mobalab.net/wp-json/wp/v2/comments`, formData)
+    axios.post(`https://test.super-fast.net/wp-json/wp/v2/comments`, formData, {
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+    })
       .then(res => {
         console.log('axios POST response !!!')
         console.log(res);
@@ -45,19 +49,10 @@ class CommentForm extends React.Component {
     return(
       <div>
         <h3>コメントを残す</h3>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            名前:
-            <input type="text" name="name" onChange={this.handleChange} />
-          </label>
-          <label>
-            メールアドレス(公開はされません):
-            <input type="text" name="email" onChange={this.handleChange} />
-          </label>
-          <label>
-            本文:
-            <input type="text" name="body" onChange={this.handleChange} />
-          </label>
+        <form className="comment-form" onSubmit={this.handleSubmit}>
+          <input type="text" name="name" placeholder="お名前" onChange={this.handleChange} />
+          <input type="text" name="email" placeholder="メールアドレス(公開されません)" onChange={this.handleChange} />
+          <textarea name="body" cols="39" rows="4" placeholder="コメント" onChange={this.handleChange} />
           <button type="submit">コメントを送信</button>
         </form>
       </div>
