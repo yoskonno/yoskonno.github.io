@@ -7,6 +7,7 @@ import axios from 'axios'
 import Layout from '../components/Layout'
 import NextPreviousPost from '../components/NextPreviousPost'
 import { BannerInPost } from '../components/Banner'
+import Comments from '../components/Comments'
 import CommentForm from '../components/CommentForm'
 import 'highlight.js/styles/railscasts.css'
 
@@ -139,6 +140,7 @@ class BlogPostTemplate extends React.Component {
           <BannerInPost isSmall={false} />
         </section>
         <section className="section">
+          <Comments wordpressId={wordpressId} />
           <CommentForm wordpressId={wordpressId} />
         </section>
       </div>
