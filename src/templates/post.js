@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import hljs from 'highlight.js'
 import { graphql, Link } from 'gatsby'
-import Async from 'react-async'
 import axios from 'axios'
 import Layout from '../components/Layout'
 import NextPreviousPost from '../components/NextPreviousPost'
 import { BannerInPost } from '../components/Banner'
+import CommentForm from '../components/CommentForm'
 import 'highlight.js/styles/railscasts.css'
 
 class BlogPostTemplate extends React.Component {
@@ -28,30 +28,6 @@ class BlogPostTemplate extends React.Component {
     document.querySelectorAll("pre").forEach(block => {
       hljs.highlightBlock(block)
     })
-    const { wordpressId } = this.props
-    console.log(`coponent did mount !!!!!!${wordpressId}`)
-    //fetch(`https://engineering.mobalab.net/wp-json/wp/v2/comments?post=${wordpressId}`)
-    fetch(`https://test.super-fast.net/wp-json/wp/v2/comments?post=13`)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          console.log('\n\n FETCHED RESUlT:')
-          console.log(result)
-          this.setState({
-            isLoaded: true,
-            comments: result
-          })
-        },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      )
   }
 
   handleChange(event) {
@@ -90,7 +66,8 @@ class BlogPostTemplate extends React.Component {
       date,
       author,
       eyeCatchImageUrl,
-      pageContext
+      pageContext,
+      wordpressId,
     } = this.props
 
     // for code highlighting
@@ -102,8 +79,6 @@ class BlogPostTemplate extends React.Component {
     const replaceIframe = "<iframe(.*?)/iframe>"
     const reIframe = new RegExp(replaceIframe, "g");
     replacedContent = replacedContent.replace(reIframe, '')
-
-    const { comments } = this.state
 
     return (
       <div className="post">
@@ -153,14 +128,6 @@ class BlogPostTemplate extends React.Component {
                 </div>
               </div>
             ) : null}
-            {comments.length !== 0 && (
-              comments.map((comment) => {
-              return(<div>{comment.content.rendered}</div>)
-              })
-            )}
-            {comments.length === 0 && (
-              <div>no comments!</div>
-            )}
           </div>
         </section>
         <section className="section">
@@ -171,25 +138,9 @@ class BlogPostTemplate extends React.Component {
         <section className="section">
           <BannerInPost isSmall={false} />
         </section>
-
-        <div>
-          <p>leave comment</p>
-          <form onSubmit={this.handleSubmit}>
-            <label>
-              Name:
-              <input type="text" name="name" onChange={this.handleChange} />
-            </label>
-            <label>
-              e-mail:
-              <input type="text" name="email" onChange={this.handleChange} />
-            </label>
-            <label>
-              body:
-              <input type="text" name="body" onChange={this.handleChange} />
-            </label>
-            <button type="submit">Post a comment</button>
-          </form>
-        </div>
+        <section className="section">
+          <CommentForm wordpressId={wordpressId} />
+        </section>
       </div>
     )
   }
