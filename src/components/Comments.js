@@ -40,14 +40,12 @@ class Comments extends React.Component {
 
     if (comments.length > 0) {
       return (
-        <section className="section">
-          <div>
-            <h3>コメント</h3>
-            {comments.map((comment) => {
-              return(<div>{comment.content.rendered}</div>)
-            })}
-          </div>
-        </section>
+        <div>
+          <h3>コメント</h3>
+          {comments.map((comment) => {
+            return(<div key={comment.id}>{comment.content.rendered}</div>)
+          })}
+        </div>
       )
     }
     return null

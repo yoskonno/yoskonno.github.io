@@ -43,26 +43,24 @@ class CommentForm extends React.Component {
 
   render() {
     return(
-      <section className="section">
-        <div>
-          <h3>コメントを残す</h3>
-          <form onSubmit={this.handleSubmit}>
-            <label>
-              名前:
-              <input type="text" name="name" onChange={this.handleChange} />
-            </label>
-            <label>
-              メールアドレス(公開はされません):
-              <input type="text" name="email" onChange={this.handleChange} />
-            </label>
-            <label>
-              本文:
-              <input type="text" name="body" onChange={this.handleChange} />
-            </label>
-            <button type="submit">コメントを送信</button>
-          </form>
-        </div>
-      </section>
+      <div>
+        <h3>コメントを残す</h3>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            名前:
+            <input type="text" name="name" onChange={this.handleChange} />
+          </label>
+          <label>
+            メールアドレス(公開はされません):
+            <input type="text" name="email" onChange={this.handleChange} />
+          </label>
+          <label>
+            本文:
+            <input type="text" name="body" onChange={this.handleChange} />
+          </label>
+          <button type="submit">コメントを送信</button>
+        </form>
+      </div>
     )
   }
 }

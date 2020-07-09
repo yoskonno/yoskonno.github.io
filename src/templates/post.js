@@ -141,6 +141,8 @@ class BlogPostTemplate extends React.Component {
         </section>
         <section className="section">
           <Comments wordpressId={wordpressId} />
+        </section>
+        <section className="section">
           <CommentForm wordpressId={wordpressId} />
         </section>
       </div>
