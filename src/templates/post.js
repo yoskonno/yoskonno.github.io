@@ -12,12 +12,15 @@ import 'highlight.js/styles/railscasts.css'
 
 class BlogPostTemplate extends React.Component {
   constructor(props) {
-    super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    super(props)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this);
     this.state = {
       comments: [],
       isLoaded: false,
-      name: 'foo san'
+      name: 'foo san',
+      email: '',
+      body: ''
     };
   }
   
@@ -52,25 +55,25 @@ class BlogPostTemplate extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({ name: event.target.value });
+    console.log('@@@ handle chagne')
+    console.log(event.target.name)
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   handleSubmit(event) {
     event.preventDefault();
 
-    const user = {
-      name: this.state.name
-    }
+    const { name, email, body } = this.state
 
     const formData = new FormData;
     formData.append('post', '13')
-    formData.append('author_name', 'gatsby-san');
-    formData.append('author_email', 'foo@bar.com');
-    formData.append('content', 'I am asking you a question.');
+    formData.append('author_name', name);
+    formData.append('author_email', email);
+    formData.append('content', body);
 
     console.log('making axios POST !!!')
 
-    axios.post(`https://test.super-fast.net/wp-json/wp/v2/comments?author_name=Your%20Name%20Here&author_email=your-email-address@website-address-here.com&author_name=Your%20Name%20Here&content=Your%20Comment%20Here&post=13`)
+    axios.post(`https://test.super-fast.net/wp-json/wp/v2/comments`, formData)
       .then(res => {
         console.log('axios POST response !!!')
         console.log(res);
@@ -99,6 +102,8 @@ class BlogPostTemplate extends React.Component {
     const replaceIframe = "<iframe(.*?)/iframe>"
     const reIframe = new RegExp(replaceIframe, "g");
     replacedContent = replacedContent.replace(reIframe, '')
+
+    const { comments } = this.state
 
     return (
       <div className="post">
@@ -148,12 +153,12 @@ class BlogPostTemplate extends React.Component {
                 </div>
               </div>
             ) : null}
-            {this.state.comments.length !== 0 && (
-              this.state.comments.map((comment) => {
+            {comments.length !== 0 && (
+              comments.map((comment) => {
               return(<div>{comment.content.rendered}</div>)
               })
             )}
-            {this.state.comments.length === 0 && (
+            {comments.length === 0 && (
               <div>no comments!</div>
             )}
           </div>
@@ -171,8 +176,16 @@ class BlogPostTemplate extends React.Component {
           <p>leave comment</p>
           <form onSubmit={this.handleSubmit}>
             <label>
-              Person Name:
+              Name:
               <input type="text" name="name" onChange={this.handleChange} />
+            </label>
+            <label>
+              e-mail:
+              <input type="text" name="email" onChange={this.handleChange} />
+            </label>
+            <label>
+              body:
+              <input type="text" name="body" onChange={this.handleChange} />
             </label>
             <button type="submit">Post a comment</button>
           </form>
