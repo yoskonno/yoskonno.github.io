@@ -14,8 +14,6 @@ class CommentForm extends React.Component {
   }
 
   handleChange(event) {
-    console.log('@@@ handle chagne')
-    console.log(event.target.name)
     this.setState({ [event.target.name]: event.target.value });
   }
 
@@ -26,16 +24,14 @@ class CommentForm extends React.Component {
     const { wordpressId } = this.props
 
     const formData = new FormData;
-    //formData.append('post', wordpressId)
+    formData.append('post', wordpressId)
     formData.append('post', 13)
     formData.append('author_name', name);
     formData.append('author_email', email);
     formData.append('content', body);
 
-    console.log('making axios POST !!!')
-
-    //axios.post(`http://stg-engineering.mobalab.net/wp-json/wp/v2/comments`, formData)
-    axios.post(`https://test.super-fast.net/wp-json/wp/v2/comments`, formData, {
+    const blogUrl = 'http://stg-engineering.mobalab.net'
+    axios.post(`${blogUrl}/wp-json/wp/v2/comments`, formData, {
       headers: {'Content-Type': 'application/x-www-form-urlencoded'}
     })
       .then(res => {
