@@ -1,4 +1,5 @@
 import React from 'react'
+import { getFormattedDateString } from '../lib/helper/TimeHelper'
 
 class Comments extends React.Component {
   constructor(props) {
@@ -47,7 +48,7 @@ class Comments extends React.Component {
             return(
               <div key={comment.id}>
                 <div>{`${comment.author_name}さん`}</div>
-                <div>{comment.date}, {comment.date_gmt}</div>
+                <div>{getFormattedDateString(comment.date)}</div>
                 <div
                   dangerouslySetInnerHTML={{
                     __html: comment.content.rendered

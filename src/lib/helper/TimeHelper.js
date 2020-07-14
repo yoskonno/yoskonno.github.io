@@ -19,8 +19,15 @@ const getCurrentYearString = () => {
   return String(jstMoment.year())
 }
 
+// convert "2020-07-14T07:18:26” to "2020年7月14日 at 7:18"
+const getFormattedDateString = (date) => {
+  const jstMoment = moment.tz(date, 'Asia/Tokyo')
+  return jstMoment.format('YYYY年M月D日 [at] H:mm')
+}
+
 module.exports = {
   getPathFromDate,
   getYearAndMonthString,
-  getCurrentYearString
+  getCurrentYearString,
+  getFormattedDateString,
 }
