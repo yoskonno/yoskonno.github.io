@@ -42,13 +42,15 @@ class Comments extends React.Component {
 
     if (comments.length > 0) {
       return (
-        <div>
+        <div className="comment">
           <h3>コメント</h3>
           {comments.map((comment) => {
             return(
-              <div key={comment.id}>
-                <div>{`${comment.author_name}さん`}</div>
-                <div>{getFormattedDateString(comment.date)}</div>
+              <div key={comment.id} className="comment__item">
+                <div className="comment__item-upper">
+                  <div>{`${comment.author_name}さん`}</div>
+                  <div>{getFormattedDateString(comment.date)}</div>
+                </div>
                 <div
                   dangerouslySetInnerHTML={{
                     __html: comment.content.rendered
