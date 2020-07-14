@@ -30,7 +30,7 @@ class CommentForm extends React.Component {
     formData.append('author_email', email);
     formData.append('content', body);
 
-    const blogUrl = 'http://stg-engineering.mobalab.net'
+    const blogUrl = 'https://test.super-fast.net'
     axios.post(`${blogUrl}/wp-json/wp/v2/comments`, formData, {
       headers: {'Content-Type': 'application/x-www-form-urlencoded'}
     })
