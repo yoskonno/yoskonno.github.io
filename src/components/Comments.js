@@ -1,5 +1,6 @@
 import React from 'react'
 import { getFormattedDateString } from '../lib/helper/TimeHelper'
+import createTree from '../lib/helper/CommentHelper'
 
 class Comments extends React.Component {
   constructor(props) {
@@ -41,6 +42,11 @@ class Comments extends React.Component {
     const { comments } = this.state
 
     if (comments.length > 0) {
+      const createdTree = createTree(comments.reverse())
+      
+      console.log('createdTree:')
+      console.log(createdTree)
+
       return (
         <div className="comment">
           <h3>コメント</h3>
