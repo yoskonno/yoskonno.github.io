@@ -1,9 +1,9 @@
 import createTree from './CommentHelper'
 
-const dataSet = [
+const items = [
   {
       id: 1,
-      parent: null,
+      parent: 0,
       name: "Grady"
   },
   {
@@ -13,10 +13,10 @@ const dataSet = [
   }
 ]
 
-const expectedDataTree = [ 
+const expectedItemsTree = [ 
   {
           id: 1,
-          parent: null,
+          parent: 0,
           name: "Grady",
           children : [
               {
@@ -30,5 +30,5 @@ const expectedDataTree = [
 ]
 
 test('get tree', () => {
-  expect(createTree(dataSet)).toMatchObject(expectedDataTree)
+  expect(createTree(items)).toMatchObject(expectedItemsTree)
 })
