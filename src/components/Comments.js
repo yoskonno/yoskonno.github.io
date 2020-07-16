@@ -2,6 +2,23 @@ import React from 'react'
 import { getFormattedDateString } from '../lib/helper/TimeHelper'
 import createTree from '../lib/helper/CommentHelper'
 
+const CommentElement = (props) => {
+  const { comment } = props
+  return (
+    <div key={comment.id} className="comment__item">
+      <div className="comment__item-upper">
+        <div>{`${comment.author_name}さん`}</div>
+        <div>{getFormattedDateString(comment.date)}</div>
+      </div>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: comment.content.rendered
+        }}
+      />
+    </div>
+  )
+}
+
 class Comments extends React.Component {
   constructor(props) {
     super(props)
@@ -12,6 +29,7 @@ class Comments extends React.Component {
   }
 
   componentDidMount() {
+    const start = Date.now()
     const blogUrl = 'https://test.super-fast.net'
     const { wordpressId } = this.props
     //fetch(`${blogUrl}/wp-json/wp/v2/comments?post=${wordpressId}`)
@@ -21,6 +39,9 @@ class Comments extends React.Component {
         (result) => {
           console.log('\n\n FETCHED RESUlT:')
           console.log(result)
+
+          console.log('### time for data fetching:')
+          console.log(Date.now() - start)
           this.setState({
             isLoaded: true,
             comments: result
@@ -42,27 +63,20 @@ class Comments extends React.Component {
     const { comments } = this.state
 
     if (comments.length > 0) {
-      const createdTree = createTree(comments.reverse())
+      const start = Date.now()
+      const commentTree = createTree(comments.reverse())
       
-      console.log('createdTree:')
-      console.log(createdTree)
+      console.log('commentTree:')
+      console.log(commentTree)
+      console.log('### time for creatingTree:')
+      console.log(Date.now() - start)
 
       return (
         <div className="comment">
           <h3>コメント</h3>
-          {comments.map((comment) => {
+          {commentTree.map((comment) => {
             return(
-              <div key={comment.id} className="comment__item">
-                <div className="comment__item-upper">
-                  <div>{`${comment.author_name}さん`}</div>
-                  <div>{getFormattedDateString(comment.date)}</div>
-                </div>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: comment.content.rendered
-                  }}
-                />
-              </div>
+              <CommentElement comment={comment} />
             )
           })}
         </div>
@@ -71,5 +85,7 @@ class Comments extends React.Component {
     return null
   }
 }
+
+
 
 export default Comments
