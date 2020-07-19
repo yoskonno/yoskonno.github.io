@@ -1,31 +1,8 @@
 import React from 'react'
+import CommentForm from './CommentForm'
+import CommentElement from './CommentElement'
 import { getFormattedDateString } from '../lib/helper/TimeHelper'
 import createTree from '../lib/helper/CommentHelper'
-
-const CommentElement = (props) => {
-  const { comment } = props
-  return (
-    <div key={comment.id} className="comment__item">
-      <div className="comment__item-upper">
-        <div>{`${comment.author_name}さん`}</div>
-        <div>{getFormattedDateString(comment.date)}</div>
-      </div>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: comment.content.rendered
-        }}
-      />
-      <div className="comment__child-container">
-        { comment.children.length > 0 && 
-        comment.children.map((childComment) => {
-          return(
-            <CommentElement comment={childComment} key={childComment.id} />
-          )
-        })}
-      </div>
-    </div>
-  )
-}
 
 class Comments extends React.Component {
   constructor(props) {
