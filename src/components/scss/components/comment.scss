@@ -9,4 +9,8 @@
     display: flex;
     justify-content: space-between;
   }
+
+  &__child-container {
+    padding-left: 30px;
+  }
 }

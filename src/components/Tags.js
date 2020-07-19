@@ -24,7 +24,7 @@ const Tags = () => (
         <div className="tag__container">
           {allTags.map(({node: tag}) => {
             return (
-              <div key={tag} className="tag__item">
+              <div key={tag.slug} className="tag__item">
                 <Link to={`/tags/${decodeURIComponent(tag.slug)}/`}>
                   {`${decodeURIComponent(tag.slug)} (${tag.count})`}
                 </Link>

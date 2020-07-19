@@ -171,12 +171,10 @@ const BlogPost = (props) => {
     eyeCatchImageUrl = post.featured_media.media_details.sizes.medium_large.source_url
   } catch(error) {
     console.log(`no media_details with: ${post.title}`)
-    console.log(error)
     try {
       eyeCatchImageUrl = post.featured_media.source_url
     } catch(error2) {
       console.log(`no featured_media with: ${post.title}`)
-      console.log(error2)
     }
   }
 

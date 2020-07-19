@@ -15,6 +15,14 @@ const CommentElement = (props) => {
           __html: comment.content.rendered
         }}
       />
+      <div className="comment__child-container">
+        { comment.children.length > 0 && 
+        comment.children.map((childComment) => {
+          return(
+            <CommentElement comment={childComment} key={childComment.id} />
+          )
+        })}
+      </div>
     </div>
   )
 }
@@ -24,7 +32,6 @@ class Comments extends React.Component {
     super(props)
     this.state = {
       comments: [],
-      isLoaded: false,
     };
   }
 
@@ -37,22 +44,12 @@ class Comments extends React.Component {
       .then(res => res.json())
       .then(
         (result) => {
-          console.log('\n\n FETCHED RESUlT:')
-          console.log(result)
-
-          console.log('### time for data fetching:')
-          console.log(Date.now() - start)
           this.setState({
-            isLoaded: true,
             comments: result
           })
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
         (error) => {
           this.setState({
-            isLoaded: true,
             error
           });
         }
@@ -63,20 +60,14 @@ class Comments extends React.Component {
     const { comments } = this.state
 
     if (comments.length > 0) {
-      const start = Date.now()
       const commentTree = createTree(comments.reverse())
-      
-      console.log('commentTree:')
-      console.log(commentTree)
-      console.log('### time for creatingTree:')
-      console.log(Date.now() - start)
 
       return (
         <div className="comment">
           <h3>コメント</h3>
           {commentTree.map((comment) => {
             return(
-              <CommentElement comment={comment} />
+              <CommentElement comment={comment} key={comment.id} />
             )
           })}
         </div>
@@ -85,7 +76,5 @@ class Comments extends React.Component {
     return null
   }
 }
-
-
 
 export default Comments

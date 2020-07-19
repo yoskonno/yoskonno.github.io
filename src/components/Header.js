@@ -61,6 +61,7 @@ const Header = (props) => (
                       <Link
                         className="header__link"
                         to={`/categories/${category.slug}`}
+                        key={category.slug}
                       >
                         {category.name}
                       </Link>
