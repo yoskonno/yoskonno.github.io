@@ -46,10 +46,9 @@ class CommentForm extends React.Component {
         })
         .catch((error) => {
           let errorMessage = ''
-          if (error.response === undefined || error.response === null) {
+          if (error.response.status === undefined || error.response.status === null) {
             errorMessage = 'コメントの送信に失敗しました。'
-          }
-          if (error.response.status === 400) {
+          } else if (error.response.status === 400) {
             errorMessage = '入力内容を再度ご確認ください。'
           } else {
             errorMessage = 'コメントの送信に失敗しました。'
