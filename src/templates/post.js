@@ -133,7 +133,7 @@ const BlogPost = (props) => {
   } catch(error) {
     // console.log(`no media_details with: ${post.title}`)
     try {
-      eyeCatchImageUrl = post.featured_media.replace('http://', 'https://i0.wp.com/')
+      eyeCatchImageUrl = post.featured_media.source_url.replace('http://', 'https://i0.wp.com/')
     } catch(error2) {
       // console.log(`no featured_media with: ${post.title}`)
     }
