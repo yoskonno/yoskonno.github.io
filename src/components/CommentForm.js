@@ -21,7 +21,7 @@ class CommentForm extends React.Component {
   }
 
   handleSubmit(event) {
-    this.setState({ isSending: true })
+    this.setState({ isSending: true, errorMessage: null })
     event.preventDefault();
 
     const { name, email, body } = this.state
@@ -65,9 +65,8 @@ class CommentForm extends React.Component {
 
     let buttonClassName = 'comment-form__button'
     if (isSending) {
-      buttonClassName += ` ${buttonClassName  }--active`
+      buttonClassName += ` ${buttonClassName  }--sending`
     }
-    console.log(buttonClassName)
     
     return(
       <div>
@@ -81,7 +80,6 @@ class CommentForm extends React.Component {
           {errorMessage !== null && (
             <p className="comment-form__error-message">{errorMessage}</p>
           )}
-          <p className="comment-form__button--super">hage</p>
           {isSent ? (
             <p className="comment-form__sent-message">コメントが送信されました。管理者により承認された後にコメントが表示されます。</p>
           ) : (

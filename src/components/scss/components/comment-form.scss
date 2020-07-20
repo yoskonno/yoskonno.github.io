@@ -1,6 +1,7 @@
 .comment-form {
   display: flex;
   flex-direction: column;
+  max-width: 600px;
 
   &__input {
     border: 1px solid #dadada;
@@ -20,15 +21,10 @@
   &__button {
     border: none;
     border-radius: 3px;
-    font-weight: bold;
     height: 40px;
     margin: 5px 0;
 
-    &--active {
-      opacity: 0.5;
-    }
-
-    &--super {
+    &--sending {
       opacity: 0.5;
     }
   }
