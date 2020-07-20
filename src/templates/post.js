@@ -3,23 +3,15 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import hljs from 'highlight.js'
 import { graphql, Link } from 'gatsby'
-import axios from 'axios'
 import Layout from '../components/Layout'
 import NextPreviousPost from '../components/NextPreviousPost'
 import { BannerInPost } from '../components/Banner'
 import Comments from '../components/Comments'
 import CommentForm from '../components/CommentForm'
+import SharingButtons from '../components/SharingButtons'
 import 'highlight.js/styles/railscasts.css'
 
 class BlogPostTemplate extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      name: 'foo san',
-      email: '',
-      body: ''
-    };
-  }
   
   componentDidMount() {
     document.querySelectorAll("pre").forEach(block => {
@@ -99,6 +91,9 @@ class BlogPostTemplate extends React.Component {
               </div>
             ) : null}
           </div>
+        </section>
+        <section className="section">
+          <SharingButtons />
         </section>
         <section className="section">
           <NextPreviousPost
