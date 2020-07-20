@@ -14,11 +14,7 @@ import 'highlight.js/styles/railscasts.css'
 class BlogPostTemplate extends React.Component {
   constructor(props) {
     super(props)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleChange = this.handleChange.bind(this);
     this.state = {
-      comments: [],
-      isLoaded: false,
       name: 'foo san',
       email: '',
       body: ''
@@ -29,33 +25,6 @@ class BlogPostTemplate extends React.Component {
     document.querySelectorAll("pre").forEach(block => {
       hljs.highlightBlock(block)
     })
-  }
-
-  handleChange(event) {
-    console.log('@@@ handle chagne')
-    console.log(event.target.name)
-    this.setState({ [event.target.name]: event.target.value });
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-
-    const { name, email, body } = this.state
-
-    const formData = new FormData;
-    formData.append('post', '13')
-    formData.append('author_name', name);
-    formData.append('author_email', email);
-    formData.append('content', body);
-
-    console.log('making axios POST !!!')
-
-    axios.post(`https://test.super-fast.net/wp-json/wp/v2/comments`, formData)
-      .then(res => {
-        console.log('axios POST response !!!')
-        console.log(res);
-        console.log(res.data);
-      })
   }
 
   render() {
@@ -159,9 +128,6 @@ const BlogPost = (props) => {
   const { data, pageContext } = props
   const { wordpressPost: post } = data
 
-  console.log('pageContext @post.js: ')
-  console.log(pageContext)
-
   const replace = "<p>(.*)</p>"
   const re = new RegExp(replace,"g");
   const excerpt = post.excerpt.replace(re, "$1").replace('[&hellip;]', '...')
@@ -170,11 +136,11 @@ const BlogPost = (props) => {
   try {
     eyeCatchImageUrl = post.featured_media.media_details.sizes.medium_large.source_url
   } catch(error) {
-    console.log(`no media_details with: ${post.title}`)
+    // console.log(`no media_details with: ${post.title}`)
     try {
       eyeCatchImageUrl = post.featured_media.source_url
     } catch(error2) {
-      console.log(`no featured_media with: ${post.title}`)
+      // console.log(`no featured_media with: ${post.title}`)
     }
   }
 

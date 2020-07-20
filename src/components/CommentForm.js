@@ -37,15 +37,11 @@ class CommentForm extends React.Component {
       formData.append('parent', messageId)
     }
 
-    const blogUrl = 'https://test.super-fast.net'
-    console.log('posting axos!')
+    const blogUrl = 'http://stg-engineering.mobalab.net'
       axios.post(`${blogUrl}/wp-json/wp/v2/comments`, formData, {
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
       })
-        .then(res => {
-          console.log('axios POST response !!!')
-          console.log(res);
-          console.log(res.data);
+        .then(() => {
           this.setState({isSending: false, isSent: true})
         })
         .catch((error) => {

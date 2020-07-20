@@ -13,22 +13,15 @@ class Comments extends React.Component {
   }
 
   componentDidMount() {
-    const start = Date.now()
-    const blogUrl = 'https://test.super-fast.net'
+    const blogUrl = 'http://stg-engineering.mobalab.net'
     const { wordpressId } = this.props
-    //fetch(`${blogUrl}/wp-json/wp/v2/comments?post=${wordpressId}`)
-    fetch(`${blogUrl}/wp-json/wp/v2/comments?post=13`)
+    fetch(`${blogUrl}/wp-json/wp/v2/comments?post=${wordpressId}`)
       .then(res => res.json())
       .then(
         (result) => {
           this.setState({
             comments: result
           })
-        },
-        (error) => {
-          this.setState({
-            error
-          });
         }
       )
   }
