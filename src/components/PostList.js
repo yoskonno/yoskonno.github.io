@@ -23,7 +23,7 @@ export default class IndexPage extends React.Component {
             let ratio = 0
 
             try {
-              thumbnailSrc = post.featured_media.media_details.sizes.medium.source_url
+              thumbnailSrc = post.featured_media.media_details.sizes.medium.source_url.replace('http://', 'https://i0.wp.com/')
 
               const { height, width } = post.featured_media.media_details.sizes.medium
               ratio = width / height
