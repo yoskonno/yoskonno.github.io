@@ -11,6 +11,7 @@ import {
 
 const SharingButtons = () => {
   const shareUrl = "http://stg-engineering.mobalab.net";
+  // TODO: need to add correct URL
   const title = "mobalab | もばらぶ";
 
   return (

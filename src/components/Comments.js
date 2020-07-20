@@ -1,7 +1,5 @@
 import React from 'react'
-import CommentForm from './CommentForm'
 import CommentElement from './CommentElement'
-import { getFormattedDateString } from '../lib/helper/TimeHelper'
 import createTree from '../lib/helper/CommentHelper'
 
 class Comments extends React.Component {
@@ -13,8 +11,9 @@ class Comments extends React.Component {
   }
 
   componentDidMount() {
-    const blogUrl = 'http://stg-engineering.mobalab.net'
-    const { wordpressId } = this.props
+    const blogUrl = 'https://test.super-fast.net'
+    //const { wordpressId } = this.props
+    const wordpressId = 17
     fetch(`${blogUrl}/wp-json/wp/v2/comments?post=${wordpressId}`)
       .then(res => res.json())
       .then(
