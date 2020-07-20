@@ -6,7 +6,7 @@ class CommentElement extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      isToggleOn: false
+      showReplyForm: false
     }
 
     this.handleClick = this.handleClick.bind(this)
@@ -15,18 +15,19 @@ class CommentElement extends React.Component {
   handleClick(e) {
     e.preventDefault();
     this.setState(state => ({
-      isToggleOn: !state.isToggleOn
+      showReplyForm: !state.showReplyForm
     }));
   }
 
   render() {
     const { comment } = this.props
+    const { showReplyForm } = this.state
 
     return (
       <div key={comment.id} className="comment__item">
         <div className="comment__item-upper">
-          <div>{`${comment.author_name}さん`}</div>
-          <div>{getFormattedDateString(comment.date)}</div>
+          <div className="comment__name">{`${comment.author_name}さん`}</div>
+          <div className="comment__date">{getFormattedDateString(comment.date)}</div>
         </div>
         <div
           dangerouslySetInnerHTML={{
@@ -34,6 +35,9 @@ class CommentElement extends React.Component {
           }}
         />
         <button type="button" onClick={this.handleClick}>返信する</button>
+        {showReplyForm && (
+          <CommentForm isReplyForm messageId={comment.id} />
+        )}
         <div className="comment__child-container">
           { comment.children.length > 0 && 
           comment.children.map((childComment) => {

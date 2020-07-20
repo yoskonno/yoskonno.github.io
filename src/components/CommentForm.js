@@ -21,14 +21,17 @@ class CommentForm extends React.Component {
     event.preventDefault();
 
     const { name, email, body } = this.state
-    const { wordpressId } = this.props
+    const { wordpressId, messageId } = this.props
 
-    const formData = new FormData;
+    const formData = new FormData
     formData.append('post', wordpressId)
     formData.append('post', 13)
-    formData.append('author_name', name);
-    formData.append('author_email', email);
-    formData.append('content', body);
+    formData.append('author_name', name)
+    formData.append('author_email', email)
+    formData.append('content', body)
+    if (messageId !== undefined) {
+      formData.append('parent', messageId)
+    }
 
     const blogUrl = 'https://test.super-fast.net'
     axios.post(`${blogUrl}/wp-json/wp/v2/comments`, formData, {
@@ -42,9 +45,10 @@ class CommentForm extends React.Component {
   }
 
   render() {
+    const { isReplyForm } = this.props
     return(
       <div>
-        <h3>コメントを残す</h3>
+        <h3>{isReplyForm ? '返信する' : 'コメントを残す'}</h3>
         <form className="comment-form" onSubmit={this.handleSubmit}>
           <input type="text" name="name" placeholder="お名前" onChange={this.handleChange} />
           <input type="text" name="email" placeholder="メールアドレス(公開されません)" onChange={this.handleChange} />
