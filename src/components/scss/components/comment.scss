@@ -35,5 +35,9 @@
     margin: 5px 0;
     padding: 0;
     text-align: left;
+
+    &:focus {
+      outline: none !important;
+    }
   }
 }

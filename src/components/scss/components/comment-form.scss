@@ -28,5 +28,9 @@
     &--sending {
       opacity: 0.5;
     }
+
+    &:focus {
+      outline: none !important;
+    }
   }
 }
