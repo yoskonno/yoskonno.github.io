@@ -33,4 +33,14 @@
       outline: none !important;
     }
   }
+
+  &__spinner-wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__spinner {
+    background-color: $mint;
+  }
 }

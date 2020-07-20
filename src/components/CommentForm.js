@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import ClipLoader from "react-spinners/ClipLoader";
 
 class CommentForm extends React.Component {
   constructor(props) {
@@ -85,7 +86,16 @@ class CommentForm extends React.Component {
               className={buttonClassName}
               type="submit"
             >
-              コメントを送信
+              {isSending ? (
+                <div className="comment-form__spinner-wrapper">
+                  <ClipLoader
+                    className="comment-form__spinner"
+                    color="#13c4a5"
+                    loading={isSending}
+                    size={30}
+                  />
+                </div>
+              ) : 'コメントを送信'}
             </button>
           )}
         </form>
