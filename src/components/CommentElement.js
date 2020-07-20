@@ -34,7 +34,7 @@ class CommentElement extends React.Component {
             __html: comment.content.rendered
           }}
         />
-        <button className="comment__reply-button" type="button" onClick={this.handleClick}>{showReplyForm ? 'キャンセル' : '返信する'}</button>
+        <button className="comment__reply-button" type="button" onClick={this.handleClick}>{showReplyForm ? '閉じる' : '返信する'}</button>
         {showReplyForm && (
           <CommentForm isReplyForm messageId={comment.id} />
         )}
