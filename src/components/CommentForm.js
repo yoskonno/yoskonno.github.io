@@ -30,7 +30,6 @@ class CommentForm extends React.Component {
 
     const formData = new FormData
     formData.append('post', wordpressId)
-    formData.append('post', 13)
     formData.append('author_name', name)
     formData.append('author_email', email)
     formData.append('content', body)
@@ -38,7 +37,7 @@ class CommentForm extends React.Component {
       formData.append('parent', messageId)
     }
 
-    const blogUrl = 'https://test.super-fast.net'
+    const blogUrl = 'https://stg-engineering.mobalab.net'
       axios.post(`${blogUrl}/wp-json/wp/v2/comments`, formData, {
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
       })

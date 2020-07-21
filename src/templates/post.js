@@ -129,7 +129,7 @@ const BlogPost = (props) => {
 
   let eyeCatchImageUrl = null
   try {
-    eyeCatchImageUrl = post.featured_media.media_details.sizes.medium_large.source_url.replace('http://', 'https://i0.wp.com/')
+    eyeCatchImageUrl = post.featured_media.media_details.sizes.medium_large.source_url.replace('https://', 'https://i0.wp.com/')
   } catch(error) {
     // console.log(`no media_details with: ${post.title}`)
     try {
