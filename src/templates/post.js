@@ -32,6 +32,8 @@ class BlogPostTemplate extends React.Component {
       wordpressId,
     } = this.props
 
+    console.log(this.props)
+
     // for code highlighting
     const replace = "brush: ([ a-z]*);";
     const re = new RegExp(replace,"g");

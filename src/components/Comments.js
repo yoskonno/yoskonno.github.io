@@ -14,6 +14,7 @@ class Comments extends React.Component {
     const blogUrl = 'https://test.super-fast.net'
     //const blogUrl = 'https://stg-engineering.mobalab.net'
     const { wordpressId } = this.props
+    console.log(`${blogUrl}/wp-json/wp/v2/comments?post=${wordpressId}`)
     fetch(`${blogUrl}/wp-json/wp/v2/comments?post=${wordpressId}`)
       .then(res => res.json())
       .then(

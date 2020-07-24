@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import ClipLoader from "react-spinners/ClipLoader";
 
 const CommentForm = (props) => {
 
-  const [state, setState] = useState({
+  const [state, setFormState] = useState({
     name: '',
     email: '',
     body: '',
@@ -13,12 +13,18 @@ const CommentForm = (props) => {
     errorMessage: null,
   })
 
+  useEffect(() => {
+      console.log('Do something after setFormState', state);
+  }, [state]);
+
   const handleChange = (event) => {
-    setState({ ...state, [event.target.name]: event.target.value });
+    setFormState({ ...state, [event.target.name]: event.target.value });
   }
 
   const handleSubmit = (event) => {
-    setState({ ...state, isSending: true, errorMessage: null })
+    console.log('handleSubmit!')
+    setFormState({ ...state, isSending: true, errorMessage: '送信するよ' })
+    console.log('送信しているよ')
     event.preventDefault();
 
     const { name, email, body } = state
@@ -26,6 +32,7 @@ const CommentForm = (props) => {
 
     const formData = new FormData
     formData.append('post', wordpressId)
+    formData.append('post', 13)
     formData.append('author_name', name)
     formData.append('author_email', email)
     formData.append('content', body)
@@ -42,7 +49,8 @@ const CommentForm = (props) => {
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
       })
         .then(() => {
-          setState({...state, isSending: false, isSent: true})
+          console.log('sent success!')
+          setFormState({...state, isSending: false, isSent: true})
         })
         .catch((error) => {
           console.log(error)
@@ -54,7 +62,8 @@ const CommentForm = (props) => {
           } else {
             errorMessage = 'コメントの送信に失敗しました。'
           }
-          setState({...state, isSending: false, errorMessage})
+          console.log('sent erorr!')
+          setFormState({...state, isSending: false, errorMessage})
       });
   }
 
