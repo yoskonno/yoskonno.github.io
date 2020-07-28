@@ -23,8 +23,7 @@ const CommentForm = (props) => {
 
   const handleSubmit = (event) => {
     console.log('handleSubmit!')
-    setFormState({ ...state, isSending: true, errorMessage: '送信するよ' })
-    console.log('送信しているよ')
+    setFormState({ ...state, isSending: true, errorMessage: null })
     event.preventDefault();
 
     const { name, email, body } = state
@@ -50,7 +49,8 @@ const CommentForm = (props) => {
       })
         .then(() => {
           console.log('sent success!')
-          setFormState({...state, isSending: false, isSent: true})
+          console.log(`errorMessage: ${state.errorMessage}`)
+          setFormState({...state, isSending: false, isSent: true, errorMessage: null})
         })
         .catch((error) => {
           console.log(error)
