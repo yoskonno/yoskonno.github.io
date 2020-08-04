@@ -92,8 +92,6 @@ exports.createPages = ({ actions, graphql }) => {
         // Create the Gatsby page for this WordPress post
         const date = new Date(post.date)
 
-        console.log('\n')
-        console.log(date)
         const pathFromDate = `/${getPathFromDate(date)}/${decodeURIComponent(post.slug)}/`
 
         const nextPost = index < posts.length - 1 ? posts[index + 1] : null
@@ -109,7 +107,6 @@ exports.createPages = ({ actions, graphql }) => {
         if (!listOfMonths.includes(yearAndMonth)) {
           listOfMonths.push(yearAndMonth)
         }
-        console.log(pathFromDate)
 
         createPage({
           path: pathFromDate,

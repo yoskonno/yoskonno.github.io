@@ -6,8 +6,6 @@ import { getPathFromDate } from '../lib/helper/TimeHelper'
 export default class IndexPage extends React.Component {
   render() {
     const { posts, path, title } = this.props
-    console.log('this.props @ PostList.js')
-    console.log(this.props)
 
     return (
       <section className="section">
@@ -28,7 +26,7 @@ export default class IndexPage extends React.Component {
               const { height, width } = post.featured_media.media_details.sizes.medium
               ratio = width / height
             } catch(error) {
-              console.log(error)
+              // console.log(error)
             }
             const backgroundImageStyle = {
               backgroundImage: `url(${thumbnailSrc})`,

@@ -18,8 +18,6 @@ const Header = (props) => (
       }
     `}
     render={data => {
-      console.log('@@@ data in header @@@')
-      console.log(data)
       const { scrollStyle, fixedHeader } = props
 
       const isFixedClass = fixedHeader ? 'isFixed' : '';
