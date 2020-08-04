@@ -31,7 +31,6 @@ const CommentForm = (props) => {
 
     const formData = new FormData
     formData.append('post', wordpressId)
-    formData.append('post', 13)
     formData.append('author_name', name)
     formData.append('author_email', email)
     formData.append('content', body)
@@ -42,8 +41,9 @@ const CommentForm = (props) => {
     console.log('state:')
     console.log(state)
     console.log(formData)
-    const blogUrl = 'https://test.super-fast.net'
-    //const blogUrl = 'https://stg-engineering.mobalab.net'
+    //const blogUrl = 'https://test.super-fast.net'
+    //formData.append('post', 13)
+    const blogUrl = 'https://stg-engineering.mobalab.net'
       axios.post(`${blogUrl}/wp-json/wp/v2/comments`, formData, {
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
       })

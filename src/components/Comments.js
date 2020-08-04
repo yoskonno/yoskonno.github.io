@@ -11,17 +11,20 @@ class Comments extends React.Component {
   }
 
   componentDidMount() {
-    const blogUrl = 'https://test.super-fast.net'
-    //const blogUrl = 'https://stg-engineering.mobalab.net'
+    const start = Date.now()
+    //const blogUrl = 'https://test.super-fast.net'
+    //const wordpressId = 13
+    const blogUrl = 'https://stg-engineering.mobalab.net'
     const { wordpressId } = this.props
-    console.log(`${blogUrl}/wp-json/wp/v2/comments?post=${wordpressId}`)
-    fetch(`${blogUrl}/wp-json/wp/v2/comments?post=${wordpressId}`)
+    console.log(`${blogUrl}/wp-json/wp/v2/comments?post=${wordpressId}&timestamp=${new Date().getTime()}`)
+    fetch(`${blogUrl}/wp-json/wp/v2/comments?post=${wordpressId}&timestamp=${new Date().getTime()}`)
       .then(res => res.json())
       .then(
         (result) => {
           this.setState({
             comments: result
           })
+          console.log(Date.now() - start)
         }
       )
   }
