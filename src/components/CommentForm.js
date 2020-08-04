@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import ClipLoader from "react-spinners/ClipLoader";
 
@@ -68,9 +68,9 @@ const CommentForm = (props) => {
         <h3>コメントを残す</h3>
       )}
       <form className="comment-form" onSubmit={handleSubmit}>
-        <input className="comment-form__input" type="text" name="name" placeholder="お名前" onChange={handleChange} />
-        <input className="comment-form__input" type="text" name="email" placeholder="メールアドレス(公開されません)" onChange={handleChange} />
-        <textarea className="comment-form__input" name="body" cols="39" rows="4" placeholder="コメント" onChange={handleChange} />
+        <input className="comment-form__input" type="text" name="name" placeholder="お名前（必須）" onChange={handleChange} />
+        <input className="comment-form__input" type="text" name="email" placeholder="メールアドレス(必須・公開されません)" onChange={handleChange} />
+        <textarea className="comment-form__input" name="body" cols="39" rows="4" placeholder="コメント（必須）" onChange={handleChange} />
         {errorMessage !== null && (
           <p className="comment-form__error-message">{errorMessage}</p>
         )}

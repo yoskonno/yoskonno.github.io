@@ -36,7 +36,7 @@ class CommentElement extends React.Component {
         />
         <button className="comment__reply-button" type="button" onClick={this.handleClick}>{showReplyForm ? '閉じる' : '返信する'}</button>
         {showReplyForm && (
-          <CommentForm isReplyForm messageId={comment.id} />
+          <CommentForm isReplyForm messageId={comment.id} wordpressId={comment.post} />
         )}
         <div className="comment__child-container">
           { comment.children.length > 0 && 
