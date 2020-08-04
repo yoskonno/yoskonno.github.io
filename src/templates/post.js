@@ -122,8 +122,9 @@ BlogPostTemplate.propTypes = {
 }
 
 const BlogPost = (props) => {
-  const { data, pageContext } = props
+  const { data, pageContext, location } = props
   const { wordpressPost: post } = data
+  const { href: currentUrl } = location
 
   const replace = "<p>(.*)</p>"
   const re = new RegExp(replace,"g");
@@ -145,6 +146,10 @@ const BlogPost = (props) => {
     <Layout>
       <Helmet title={`${post.title} – もばらぶエンジニアブログ`}>
         <meta name="description" content={excerpt} />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={excerpt} />
+        <meta property="og:url" content={currentUrl} />
+        <meta property="og:image" content={eyeCatchImageUrl} />
       </Helmet>
       <BlogPostTemplate
         content={post.content}

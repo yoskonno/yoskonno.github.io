@@ -5,6 +5,7 @@ import Header from './Header'
 import Footer from './Footer'
 import Sidebar from './Sidebar'
 import './scss/style.scss'
+import logo from '../img/logo.svg'
 
 const TemplateWrapper = ({ children }) => {
 
@@ -62,6 +63,16 @@ const TemplateWrapper = ({ children }) => {
         <meta name="description" content="リモート開発メインのソフトウェア開発企業のエンジニアブログです" />
   
         <meta name="robots" content="noindex" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="もばらぶエンジニアブログ" />
+        <meta property="og:description" content="リモート開発メインのソフトウェア開発企業のエンジニアブログです" />
+        <meta property="og:url" content="https://engineering.mobalab.net/" />
+        <meta property="og:site_name" content="もばらぶエンジニアブログ" />
+        <meta property="og:image" content={logo} />
+        <meta property="og:locale" content="ja_JP" />
+        <meta name="twitter:creator" content="@mobalab" />
+        <meta name="twitter:site" content="@mobalab" />
         
       </Helmet>
       <Header scrollStyle={scrollStyle} fixedHeader={fixedHeader} />
