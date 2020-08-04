@@ -11,12 +11,9 @@ class Comments extends React.Component {
   }
 
   componentDidMount() {
-    const start = Date.now()
-    //const blogUrl = 'https://test.super-fast.net'
-    //const wordpressId = 13
     const blogUrl = 'https://stg-engineering.mobalab.net'
     const { wordpressId } = this.props
-    console.log(`${blogUrl}/wp-json/wp/v2/comments?post=${wordpressId}&timestamp=${new Date().getTime()}`)
+    // adding timestamp in order to avoid cache
     fetch(`${blogUrl}/wp-json/wp/v2/comments?post=${wordpressId}&timestamp=${new Date().getTime()}`)
       .then(res => res.json())
       .then(
@@ -24,7 +21,6 @@ class Comments extends React.Component {
           this.setState({
             comments: result
           })
-          console.log(Date.now() - start)
         }
       )
   }

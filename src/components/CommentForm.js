@@ -13,16 +13,11 @@ const CommentForm = (props) => {
     errorMessage: null,
   })
 
-  useEffect(() => {
-      console.log('Do something after setFormState', state);
-  }, [state]);
-
   const handleChange = (event) => {
     setFormState({ ...state, [event.target.name]: event.target.value });
   }
 
   const handleSubmit = (event) => {
-    console.log('handleSubmit!')
     setFormState({ ...state, isSending: true, errorMessage: null })
     event.preventDefault();
 
@@ -38,22 +33,15 @@ const CommentForm = (props) => {
       formData.append('parent', messageId)
     }
 
-    console.log('state:')
-    console.log(state)
-    console.log(formData)
-    //const blogUrl = 'https://test.super-fast.net'
-    //formData.append('post', 13)
     const blogUrl = 'https://stg-engineering.mobalab.net'
       axios.post(`${blogUrl}/wp-json/wp/v2/comments`, formData, {
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
       })
         .then(() => {
-          console.log('sent success!')
-          console.log(`errorMessage: ${state.errorMessage}`)
           setFormState({...state, isSending: false, isSent: true, errorMessage: null})
         })
         .catch((error) => {
-          console.log(error)
+          // console.log(error)
           let errorMessage = ''
           if (error.response === undefined) {
             errorMessage = 'コメントの送信に失敗しました。'
@@ -62,7 +50,6 @@ const CommentForm = (props) => {
           } else {
             errorMessage = 'コメントの送信に失敗しました。'
           }
-          console.log('sent erorr!')
           setFormState({...state, isSending: false, errorMessage})
       });
   }
