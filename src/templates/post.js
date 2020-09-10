@@ -100,7 +100,7 @@ class BlogPostTemplate extends React.Component {
             pageContext={pageContext}
           />
         </section>
-        <section className="section">
+        <section className="section section--gray">
           <BannerInPost isSmall={false} />
         </section>
         <section className="section">

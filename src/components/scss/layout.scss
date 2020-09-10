@@ -36,5 +36,9 @@
 
 .section {
   padding: 30px 15px;
+
+  &--gray {
+    background-color: $gray100;
+  }
 }
 

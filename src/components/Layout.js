@@ -62,7 +62,7 @@ const TemplateWrapper = ({ children }) => {
         <html lang="ja" />
         <meta name="description" content="リモート開発メインのソフトウェア開発企業のエンジニアブログです" />
   
-        <meta name="robots" content="noindex" />
+        <meta name="robots" content="noindex, nofollow" />
 
         <meta property="og:type" content="website" />
         <meta property="og:title" content="もばらぶエンジニアブログ" />
