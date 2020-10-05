@@ -10,7 +10,7 @@ import {
 } from 'react-share'
 
 const SharingButtons = () => {
-  const shareUrl = "https://stg-engineering.mobalab.net";
+  const shareUrl = "https://stg-engineering-wp.mobalab.net";
   // TODO: need to add correct URL
   const title = "mobalab | もばらぶ";
 

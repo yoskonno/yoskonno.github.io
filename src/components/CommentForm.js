@@ -33,7 +33,7 @@ const CommentForm = (props) => {
       formData.append('parent', messageId)
     }
 
-    const blogUrl = 'https://stg-engineering.mobalab.net'
+    const blogUrl = 'https://stg-engineering-wp.mobalab.net'
       axios.post(`${blogUrl}/wp-json/wp/v2/comments`, formData, {
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
       })

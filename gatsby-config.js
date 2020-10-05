@@ -9,7 +9,7 @@ module.exports = {
       resolve: 'gatsby-source-wordpress',
       options: {
         // The base url to your WP site.
-        baseUrl: 'stg-engineering.mobalab.net/',
+        baseUrl: 'stg-engineering-wp.mobalab.net/',
         keepMediaSizes: true,
         // WP.com sites set to true, WP.org set to false
         hostingWPCOM: false,
@@ -33,4 +33,5 @@ module.exports = {
     },
     'gatsby-plugin-netlify', // make sure to keep it last in the array
   ],
+  pathPrefix: `/blog-foo`,
 }

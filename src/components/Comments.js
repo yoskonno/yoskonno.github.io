@@ -11,7 +11,7 @@ class Comments extends React.Component {
   }
 
   componentDidMount() {
-    const blogUrl = 'https://stg-engineering.mobalab.net'
+    const blogUrl = 'https://stg-engineering-wp.mobalab.net'
     const { wordpressId } = this.props
     // adding timestamp in order to avoid cache
     fetch(`${blogUrl}/wp-json/wp/v2/comments?post=${wordpressId}&timestamp=${new Date().getTime()}`)
